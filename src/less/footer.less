@@ -1,0 +1,80 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name footer.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the footer
+ **
+ ****************************************************************************/
+
+@import url('variables');
+@import url('mixins');
+
+footer {
+
+    .footerBar;
+    .heading-font;
+
+    bottom: 0px;
+    color: @color8;
+    height: 25px;
+    padding: 0px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
+
+    .copyright,
+    .fullname,
+    .abbrev,
+    .allRights {
+        font-size: 9pt;
+        text-align: center;
+        text-transform: none;
+    }
+    .abbrev {
+        display: none;
+    }
+}
+
+@media ( min-width: 425px ) and ( max-width: 767px ) { // Minimum width: 425px - Large Mobile
+    margin-top: 10px;
+    top: 20px;   
+    font-size: 9pt;
+    font-size: 90%;
+                
+    .copyrightLine {
+        vertical-align: middle;
+        
+        .copyright {
+            display: inline-block;
+        }
+        .allRights {
+            display: none;
+        }
+    }
+
+} // ALL Sections
+
+@media ( min-width: 1px ) and ( max-width: 424px ) { // Minimum width: 375px - Medium Mobile
+    margin-top: 20px;   
+    //font-size: 12pt;
+
+    .copyrightLine {
+        .abbrev {
+            display: inline-block;
+            padding: 20px;
+        }
+        .fullname {
+            display: none;
+        }
+        .allRights {
+            display: none;
+        }
+    }
+}
+
+/*****************************************************************************
+ ** END OF FILE - footer.less
+ ****************************************************************************/

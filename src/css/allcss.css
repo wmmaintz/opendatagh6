@@ -1,0 +1,1043 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name main.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the main attributes
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+header,
+section,
+footer,
+aside,
+article,
+figure {
+  display: block;
+}
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+a {
+  color: #000080;
+}
+a:hover,
+a:focus,
+a:active,
+a .active {
+  background-color: #005949;
+  color: #000000;
+  outline: inherit;
+}
+body {
+  font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: none;
+  -webkit-tap-highlight-color: #231f20;
+  background-position: 50 50;
+  min-height: 100%;
+  min-width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../img/home/blue-smoke-wallpaper-hd.jpg');
+  margin: 0px;
+  padding: 0px;
+}
+.btn:focus,
+.btn:active,
+.btn:active:focus,
+.btn .active {
+  outline: 0px;
+}
+.btn-primary {
+  color: white;
+  background-color: #231f20;
+  border-color: #231f20;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: white;
+  background-color: #080707;
+  border-color: #030202;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #231f20;
+  border-color: #231f20;
+}
+.btn-primary .badge {
+  color: #231f20;
+  background-color: white;
+}
+.btn-variant {
+  color: #007fa1;
+  background-color: #005949;
+  border-color: #79bcb7;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.btn-variant:hover,
+.btn-variant:focus,
+.btn-variant:active,
+.btn-variant.active,
+.open .dropdown-toggle.btn-variant {
+  color: #007fa1;
+  background-color: #00261f;
+  border-color: #53a59f;
+}
+.btn-variant:active,
+.btn-variant.active,
+.open .dropdown-toggle.btn-variant {
+  background-image: none;
+}
+.btn-variant.disabled,
+.btn-variant[disabled],
+fieldset[disabled] .btn-variant,
+.btn-variant.disabled:hover,
+.btn-variant[disabled]:hover,
+fieldset[disabled] .btn-variant:hover,
+.btn-variant.disabled:focus,
+.btn-variant[disabled]:focus,
+fieldset[disabled] .btn-variant:focus,
+.btn-variant.disabled:active,
+.btn-variant[disabled]:active,
+fieldset[disabled] .btn-variant:active,
+.btn-variant.disabled.active,
+.btn-variant[disabled].active,
+fieldset[disabled] .btn-variant.active {
+  background-color: #005949;
+  border-color: #79bcb7;
+}
+.btn-variant .badge {
+  color: #005949;
+  background-color: #007fa1;
+}
+.btn-xl {
+  color: white;
+  background-color: #231f20;
+  border-color: #231f20;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 20px 40px;
+}
+.btn-xl:hover,
+.btn-xl:focus,
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+  color: white;
+  background-color: #080707;
+  border-color: #030202;
+}
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+  background-image: none;
+}
+.btn-xl.disabled,
+.btn-xl[disabled],
+fieldset[disabled] .btn-xl,
+.btn-xl.disabled:hover,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl:hover,
+.btn-xl.disabled:focus,
+.btn-xl[disabled]:focus,
+fieldset[disabled] .btn-xl:focus,
+.btn-xl.disabled:active,
+.btn-xl[disabled]:active,
+fieldset[disabled] .btn-xl:active,
+.btn-xl.disabled.active,
+.btn-xl[disabled].active,
+fieldset[disabled] .btn-xl.active {
+  background-color: #231f20;
+  border-color: #231f20;
+}
+.btn-xl .badge {
+  color: #231f20;
+  background-color: white;
+}
+.clear {
+  clear: both;
+}
+.container {
+  display: inline-block;
+  height: 100%;
+  margin: 0px auto;
+  overflow: auto;
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+}
+.vertical-scrollbar {
+  overflow-x: hidden;
+  /*for hiding horizontal scroll bar*/
+  overflow-y: auto;
+  /*for vertical scroll bar*/
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.img-centered {
+  margin: 0px auto;
+}
+.jumbotron {
+  border-radius: 50px;
+  color: #231f20;
+  background: -webkit-radial-gradient(#414042, #005949, #414042);
+  background: -moz-radial-gradient(#414042, #005949, #414042);
+  background: -ms-radial-gradient(#414042, #005949, #414042);
+  background: -o-radial-gradient(#414042, #005949, #414042);
+  background: radial-gradient(#414042, #005949, #414042);
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.ng-animate.item:not(.left):not(.right) {
+  -webkit-transition: 0s ease-in-out left;
+  transition: 0s ease-in-out left;
+}
+p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+p .large {
+  font-size: 16px;
+}
+pre {
+  background-color: #005949;
+  line-height: 1.1;
+  margin: 0px auto;
+  width: 50%;
+  z-index: 9999;
+}
+pre .stateDisplay {
+  align-content: flex-start;
+  bottom: 100px;
+  display: inline-block;
+  height: 90px;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  width: 300px;
+}
+pre .stateDisplay p {
+  color: #FF0000;
+  font-size: 12px;
+  overflow: hidden;
+}
+.row {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.text-muted {
+  color: #6d6e71;
+}
+.text-primary {
+  color: #231f20;
+}
+::-moz-selection {
+  background: #231f20;
+  text-shadow: none;
+}
+::selection {
+  background: #231f20;
+  text-shadow: none;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+/*****************************************************************************
+ ** END OF FILE - main.less
+ ****************************************************************************/
+/*# sourceMappingURL=main.css.map */
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name navbar.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the navigation bar
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+.nav,
+.navbar-default,
+.navbar-right {
+  background: -webkit-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -moz-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -ms-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -o-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  border: 0.25px solid #231f20;
+  -moz-box-sizing: none;
+  -webkit-box-shadow: 0px 0px;
+  -webkit-box-sizing: none;
+  border: 0px;
+  box-shadow: 0px 0px;
+  box-sizing: none;
+  height: 55px;
+  margin-top: 0px;
+  z-index: 9999;
+}
+.nav .navbar-toggle,
+.navbar-default .navbar-toggle,
+.navbar-right .navbar-toggle {
+  border: 2px solid #005949;
+}
+.nav .menu-item,
+.navbar-default .menu-item,
+.navbar-right .menu-item {
+  background: -webkit-radial-gradient(#6d6e71, #414042);
+  background: -moz-radial-gradient(#6d6e71, #414042);
+  background: -ms-radial-gradient(#6d6e71, #414042);
+  background: -o-radial-gradient(#6d6e71, #414042);
+  background: radial-gradient(#6d6e71, #414042);
+  color: #ebe6da;
+  border: 2px solid #231f20;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border: 1px solid #414042;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 50px;
+  margin-bottom: 0px;
+  margin-top: 2px;
+  padding: 13px;
+}
+.nav .menu-item:active,
+.navbar-default .menu-item:active,
+.navbar-right .menu-item:active,
+.nav .menu-item.active,
+.navbar-default .menu-item.active,
+.navbar-right .menu-item.active,
+.nav .menu-item::selection,
+.navbar-default .menu-item::selection,
+.navbar-right .menu-item::selection,
+.nav .menu-item::-moz-selection,
+.navbar-default .menu-item::-moz-selection,
+.navbar-right .menu-item::-moz-selection {
+  background: -webkit-radial-gradient(#79bcb7, #007fa1);
+  background: -moz-radial-gradient(#79bcb7, #007fa1);
+  background: -ms-radial-gradient(#79bcb7, #007fa1);
+  background: -o-radial-gradient(#79bcb7, #007fa1);
+  background: radial-gradient(#79bcb7, #007fa1);
+  color: #007fa1;
+  border: 2px solid #231f20;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border-radius: 10px;
+}
+.nav .menu-item:hover,
+.navbar-default .menu-item:hover,
+.navbar-right .menu-item:hover,
+.nav .menu-item:focus,
+.navbar-default .menu-item:focus,
+.navbar-right .menu-item:focus {
+  background: -webkit-radial-gradient(#005949, #231f20);
+  background: -moz-radial-gradient(#005949, #231f20);
+  background: -ms-radial-gradient(#005949, #231f20);
+  background: -o-radial-gradient(#005949, #231f20);
+  background: radial-gradient(#005949, #231f20);
+  color: #ebe6da;
+  border: 2px solid #ebe6da;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border-radius: 10px;
+}
+.nav .submenu-item,
+.navbar-default .submenu-item,
+.navbar-right .submenu-item {
+  background: -webkit-radial-gradient(#6d6e71, #94327e);
+  background: -moz-radial-gradient(#6d6e71, #94327e);
+  background: -ms-radial-gradient(#6d6e71, #94327e);
+  background: -o-radial-gradient(#6d6e71, #94327e);
+  background: radial-gradient(#6d6e71, #94327e);
+  color: #007fa1;
+  border: 2px solid #94327e;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  background-color: black;
+  border-radius: 15px;
+}
+.nav .submenu-item:active,
+.navbar-default .submenu-item:active,
+.navbar-right .submenu-item:active,
+.nav .submenu-item.active,
+.navbar-default .submenu-item.active,
+.navbar-right .submenu-item.active {
+  background: -webkit-radial-gradient(#231f20, #005949);
+  background: -moz-radial-gradient(#231f20, #005949);
+  background: -ms-radial-gradient(#231f20, #005949);
+  background: -o-radial-gradient(#231f20, #005949);
+  background: radial-gradient(#231f20, #005949);
+  color: #414042;
+  border: 2px solid #414042;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+}
+.nav .submenu-item:hover,
+.navbar-default .submenu-item:hover,
+.navbar-right .submenu-item:hover,
+.nav .submenu-item:focus,
+.navbar-default .submenu-item:focus,
+.navbar-right .submenu-item:focus {
+  background: -webkit-radial-gradient(#005949, #231f20);
+  background: -moz-radial-gradient(#005949, #231f20);
+  background: -ms-radial-gradient(#005949, #231f20);
+  background: -o-radial-gradient(#005949, #231f20);
+  background: radial-gradient(#005949, #231f20);
+  color: #ebe6da;
+  border: 2px solid #414042;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+}
+.nav .dropdown-menu,
+.navbar-default .dropdown-menu,
+.navbar-right .dropdown-menu {
+  -webkit-box-shadow: 0px 0px;
+  background-color: transparent;
+  border: 10px solid transparent;
+  box-shadow: 0px 0px;
+  padding: 0px;
+}
+.navbar-collapse {
+  background-color: transparent;
+  color: #6d6e71;
+}
+.navbar-collapse .navbar-form {
+  border: 1px solid #ebe6da;
+}
+/*****************************************************************************
+ ** END OF FILE - navbar.less
+ ****************************************************************************/
+/*# sourceMappingURL=navbar.css.map */
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name footer.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the footer
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+footer {
+  background: -webkit-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
+  background: -moz-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
+  background: -ms-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
+  background: -o-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
+  background: linear-gradient(#6d6e71, #ebe6da, #ebe6da);
+  border-top: 0.25px solid #db124b;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  bottom: 0px;
+  color: #231f20;
+  height: 25px;
+  padding: 0px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
+}
+footer .copyright,
+footer .fullname,
+footer .abbrev,
+footer .allRights {
+  font-size: 9pt;
+  text-align: center;
+  text-transform: none;
+}
+footer .abbrev {
+  display: none;
+}
+@media (min-width: 425px) and (max-width: 767px) {
+  margin-top: 10px;
+  top: 20px;
+  font-size: 9pt;
+  font-size: 90%;
+  .copyrightLine {
+    vertical-align: middle;
+  }
+  .copyrightLine .copyright {
+    display: inline-block;
+  }
+  .copyrightLine .allRights {
+    display: none;
+  }
+}
+@media (min-width: 1px) and (max-width: 424px) {
+  margin-top: 20px;
+  .copyrightLine .abbrev {
+    display: inline-block;
+    padding: 20px;
+  }
+  .copyrightLine .fullname {
+    display: none;
+  }
+  .copyrightLine .allRights {
+    display: none;
+  }
+}
+/*****************************************************************************
+ ** END OF FILE - footer.less
+ ****************************************************************************/
+/*# sourceMappingURL=footer.css.map */
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name sections.less
+ **
+ ** @description
+ ** LESS/CSS for each section within the app.
+ ** Utilizes Responsive Web Design and CSS3 features and functionality.
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+.container,
+.container-fluid {
+  border: 0px solid transparent;
+}
+section {
+  background: -webkit-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -moz-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -ms-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -o-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: linear-gradient(#79bcb7, #ebe6da, transparent);
+  color: #414042;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  top: 0px;
+  font-size: 14pt;
+}
+section .section-heading {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  margin-top: 60px;
+  overflow-x: wrap;
+  overflow-y: wrap;
+  text-shadow: 2px 3px 6px #005949;
+  word-wrap: break-word;
+  font-size: 20pt;
+}
+section .section-subheading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: #ebe6da;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0px auto 0px;
+  text-shadow: 2px 2px 4px #005949;
+  text-transform: none;
+  word-wrap: break-word;
+  font-size: 16pt;
+}
+section .theResult {
+  font-family: monospace;
+  font-style: normal;
+  font-weight: normal;
+  background-color: green;
+}
+/**
+ ** Google & Bootstrap Device Sizes
+ **
+ ** 1440px - Large Desktop
+ ** 1200px - size_xl
+ ** 1072px - size_lg
+ ** 1024px - Normal Desktop
+ **  992px - size_md
+ **  768px - size_sm
+ **  768px - Tablet
+ **  425px - Large Mobile
+ **  375px - Medium Mobile
+ **  350px - size_xs
+ **  320px - Small Mobile
+ **
+ **/
+@media (min-width: 1440px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+  section .section-subheading img {
+    size: 150%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1439px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+}
+@media (min-width: 1072px) and (max-width: 1199px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1071px) {
+  section .section-heading {
+    font-size: 48pt;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023px) {
+  section .section-heading {
+    font-size: 48pt;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  section .section-heading {
+    font-size: 45pt;
+    margin-top: 50px;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 425px) and (max-width: 767px) {
+  section .section-heading {
+    font-size: 30pt;
+    margin-top: 70px;
+  }
+  section .section-subheading {
+    font-size: 20pt;
+  }
+}
+@media (min-width: 375px) and (max-width: 424px) {
+  section .section-heading {
+    font-size: 24pt;
+    margin-top: 70px;
+  }
+  section .section-subheading {
+    font-size: 18pt;
+  }
+}
+@media (min-width: 350px) and (max-width: 374px) {
+  section .section-heading {
+    font-size: 24pt;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 320px) and (max-width: 349px) and (orientation: portrait) {
+  section .section-heading {
+    font-size: 20pt;
+    margin-top: 60px;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 1px) and (max-width: 319px) {
+  section {
+    display: none;
+  }
+}
+.home-section {
+  background: -webkit-linear-gradient(transparent, transparent, transparent);
+  background: -moz-linear-gradient(transparent, transparent, transparent);
+  background: -ms-linear-gradient(transparent, transparent, transparent);
+  background: -o-linear-gradient(transparent, transparent, transparent);
+  background: linear-gradient(transparent, transparent, transparent);
+}
+.home-section .section-heading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: none;
+  font-style: italic;
+  padding: 0px 10px 0px;
+  color: #231f20;
+  text-shadow: 2px 3px 4px #ebe6da;
+}
+.home-section .section-subheading img {
+  margin: 0px auto 30px;
+  width: 90%;
+  max-width: 500px;
+}
+.home-section .calContainer {
+  display: inline-block;
+  height: 100%;
+  margin: 0px auto;
+  overflow: auto;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
+}
+.home-section .calContainer .calSubcontainer {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 10px;
+}
+.home-section .calContainer .calSubcontainer #calBox {
+  margin: 0px;
+  padding: 10px;
+  width: 100%;
+}
+.home-section .calTable {
+  background-color: #414042;
+  border: 1px dotted #db124b;
+  color: #231f20;
+  display: inline-block;
+  font-size: 8pt;
+  margin: 5px auto;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0px;
+}
+.home-section .calTable .monHdr {
+  font-size: 12pt;
+  margin: 0px auto;
+  text-align: center;
+}
+.home-section .calTable .wkdayHdr {
+  font-size: 10pt;
+  margin: 10px 20px;
+  padding: 2px;
+  text-align: center;
+}
+.home-section .calTable .calDayRow {
+  font-size: 8pt;
+  text-align: center;
+  width: 30px;
+}
+.home-section .calTable .hiLite {
+  background-color: #db124b;
+  border-radius: 40%;
+  color: #414042;
+}
+.home-section #learnMore {
+  margin: 0px auto;
+  text-align: center;
+}
+.about-section {
+  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
+  background: linear-gradient(#6d6e71, #231f20, transparent);
+}
+.about-section .about-text {
+  color: #414042;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.about-section .section-subheading {
+  color: #ebe6da;
+}
+.website-section {
+  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
+  background: linear-gradient(#6d6e71, #231f20, transparent);
+}
+.website-section .about-text {
+  color: #414042;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.website-section .section-subheading {
+  color: #007fa1;
+}
+.website-section img {
+  height: 60px;
+  width: auto;
+}
+.account-section {
+  background-color: white;
+  color: #79bcb7;
+}
+.account-section button,
+.account-section .btn,
+.account-section .btn-primary {
+  background-color: #79bcb7;
+  color: #414042;
+}
+/*****************************************************************************
+ ** END OF FILE - sections.less
+ ****************************************************************************/
+/*# sourceMappingURL=sections.css.map */

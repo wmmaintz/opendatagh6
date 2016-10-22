@@ -1,0 +1,322 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name sections.less
+ **
+ ** @description
+ ** LESS/CSS for each section within the app.
+ ** Utilizes Responsive Web Design and CSS3 features and functionality.
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+.container,
+.container-fluid {
+  border: 0px solid transparent;
+}
+section {
+  background: -webkit-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -moz-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -ms-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: -o-linear-gradient(#79bcb7, #ebe6da, transparent);
+  background: linear-gradient(#79bcb7, #ebe6da, transparent);
+  color: #414042;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  top: 0px;
+  font-size: 14pt;
+}
+section .section-heading {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: uppercase;
+  margin-top: 60px;
+  overflow-x: wrap;
+  overflow-y: wrap;
+  text-shadow: 2px 3px 6px #005949;
+  word-wrap: break-word;
+  font-size: 20pt;
+}
+section .section-subheading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: #ebe6da;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0px auto 0px;
+  text-shadow: 2px 2px 4px #005949;
+  text-transform: none;
+  word-wrap: break-word;
+  font-size: 16pt;
+}
+section .theResult {
+  font-family: monospace;
+  font-style: normal;
+  font-weight: normal;
+  background-color: green;
+}
+/**
+ ** Google & Bootstrap Device Sizes
+ **
+ ** 1440px - Large Desktop
+ ** 1200px - size_xl
+ ** 1072px - size_lg
+ ** 1024px - Normal Desktop
+ **  992px - size_md
+ **  768px - size_sm
+ **  768px - Tablet
+ **  425px - Large Mobile
+ **  375px - Medium Mobile
+ **  350px - size_xs
+ **  320px - Small Mobile
+ **
+ **/
+@media (min-width: 1440px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+  section .section-subheading img {
+    size: 150%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1439px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+}
+@media (min-width: 1072px) and (max-width: 1199px) {
+  section .section-heading {
+    font-size: 50pt;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1071px) {
+  section .section-heading {
+    font-size: 48pt;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023px) {
+  section .section-heading {
+    font-size: 48pt;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  section .section-heading {
+    font-size: 45pt;
+    margin-top: 50px;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 425px) and (max-width: 767px) {
+  section .section-heading {
+    font-size: 30pt;
+    margin-top: 70px;
+  }
+  section .section-subheading {
+    font-size: 20pt;
+  }
+}
+@media (min-width: 375px) and (max-width: 424px) {
+  section .section-heading {
+    font-size: 24pt;
+    margin-top: 70px;
+  }
+  section .section-subheading {
+    font-size: 18pt;
+  }
+}
+@media (min-width: 350px) and (max-width: 374px) {
+  section .section-heading {
+    font-size: 24pt;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 320px) and (max-width: 349px) and (orientation: portrait) {
+  section .section-heading {
+    font-size: 20pt;
+    margin-top: 60px;
+  }
+  section .section-subheading {
+    font-size: 16pt;
+  }
+}
+@media (min-width: 1px) and (max-width: 319px) {
+  section {
+    display: none;
+  }
+}
+.home-section {
+  background: -webkit-linear-gradient(transparent, transparent, transparent);
+  background: -moz-linear-gradient(transparent, transparent, transparent);
+  background: -ms-linear-gradient(transparent, transparent, transparent);
+  background: -o-linear-gradient(transparent, transparent, transparent);
+  background: linear-gradient(transparent, transparent, transparent);
+}
+.home-section .section-heading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: none;
+  font-style: italic;
+  padding: 0px 10px 0px;
+  color: #231f20;
+  text-shadow: 2px 3px 4px #ebe6da;
+}
+.home-section .section-subheading img {
+  margin: 0px auto 30px;
+  width: 90%;
+  max-width: 500px;
+}
+.home-section .calContainer {
+  display: inline-block;
+  height: 100%;
+  margin: 0px auto;
+  overflow: auto;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
+}
+.home-section .calContainer .calSubcontainer {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 10px;
+}
+.home-section .calContainer .calSubcontainer #calBox {
+  margin: 0px;
+  padding: 10px;
+  width: 100%;
+}
+.home-section .calTable {
+  background-color: #414042;
+  border: 1px dotted #db124b;
+  color: #231f20;
+  display: inline-block;
+  font-size: 8pt;
+  margin: 5px auto;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0px;
+}
+.home-section .calTable .monHdr {
+  font-size: 12pt;
+  margin: 0px auto;
+  text-align: center;
+}
+.home-section .calTable .wkdayHdr {
+  font-size: 10pt;
+  margin: 10px 20px;
+  padding: 2px;
+  text-align: center;
+}
+.home-section .calTable .calDayRow {
+  font-size: 8pt;
+  text-align: center;
+  width: 30px;
+}
+.home-section .calTable .hiLite {
+  background-color: #db124b;
+  border-radius: 40%;
+  color: #414042;
+}
+.home-section #learnMore {
+  margin: 0px auto;
+  text-align: center;
+}
+.about-section {
+  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
+  background: linear-gradient(#6d6e71, #231f20, transparent);
+}
+.about-section .about-text {
+  color: #414042;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.about-section .section-subheading {
+  color: #ebe6da;
+}
+.website-section {
+  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
+  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
+  background: linear-gradient(#6d6e71, #231f20, transparent);
+}
+.website-section .about-text {
+  color: #414042;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.website-section .section-subheading {
+  color: #007fa1;
+}
+.website-section img {
+  height: 60px;
+  width: auto;
+}
+.account-section {
+  background-color: white;
+  color: #79bcb7;
+}
+.account-section button,
+.account-section .btn,
+.account-section .btn-primary {
+  background-color: #79bcb7;
+  color: #414042;
+}
+/*****************************************************************************
+ ** END OF FILE - sections.less
+ ****************************************************************************/
+/*# sourceMappingURL=sections.css.map */

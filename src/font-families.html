@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <script>
+        'use strict';
+        function myFunction(selectTag) {
+
+            var listValue = selectTag.options[selectTag.selectedIndex].text+',sans-serif';
+            //var listValue = document.getElementById('fontSelection').selectedIndex.text;
+
+            var allStr = 'aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ1!2@3#$5%6^7&8*9(0)`~[{]}\|;:\'",<.>/?';
+            // Populate the displayStr variable
+            var displayStr = '<p style=\"font-family:Arial\">';
+            for(var i=0; i < allStr.length; i++) {
+                displayStr = displayStr + 
+                            allStr[i] + 
+                            //'[<span  style="font-family:'+listValue+'"> ' + 
+                            '[<span  class="selectedFont">' + 
+                            allStr[i] + 
+                            '</span>] - ';
+            }
+            displayStr=displayStr + '</p>';  // displayStr created
+
+            document.getElementById('fontID').innerHTML = listValue;
+            document.getElementById('fontID').style.color = 'red';
+            document.getElementById('fontDisplay').innerHTML = displayStr;
+ 
+            var numList = document.getElementsByClassName('selectedFont').length - 1;
+            for(i=0; i<=numList;i++){
+                document.getElementsByClassName('selectedFont')[i].style.fontFamily = listValue;
+                document.getElementsByClassName('selectedFont')[i].style.color = 'red';
+            }
+        }
+    </script>
+    <title>Font-Familes</title>
+</head>
+<body>
+    <div style="font-family:Arial; font-size:12pt;"> 
+        <table>
+            <tr>
+                <td>
+                    <select id="fontSelections" onchange="myFunction(this);" size="15">
+                        <option>Georgia</option>
+                        <option>Palatino Linotype</option>
+                        <option>Book Antiqua</option>
+                        <option>Times New Roman</option>
+                        <option>Arial</option>
+                        <option>Helvetica</option>
+                        <option>Arial Black</option>
+                        <option>Impact</option>
+                        <option>Lucida Sans Unicode</option>
+                        <option>Tahoma</option>
+                        <option>Verdana</option>
+                        <option>Courier New</option>
+                        <option>Lucida Console</option>
+                        <option>Webdings</option>
+                        <option>Wingdings</option>
+                    </select>
+                </td>
+                <td>
+                    Font Name Selected: 
+                    [<span id="fontID">None Selected Yet</span>]
+                    <br/>
+                    <br/>
+                    <strong>Alphabet:</strong><br/>
+                    abcdefghijklmnopqrstuvwxyz<br/>
+                    <span class="selectedFont">
+                    abcdefghijklmnopqrstuvwxyz
+                    </span><br/>
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
+                    <span class="selectedFont">
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                    </span><br/>
+                    <br/>
+                    <strong>Numbers:</strong><br/>
+                    0123456789<br/>
+                    <span class="selectedFont">
+                    0123456789<br/>
+                    </span>
+                    <br/>
+                    <strong>Sentence:</strong><br/>
+                    <span class="selectedFont">
+                    This is a sentence using the selected font. 1234567890<br/>
+                    </span>
+                    <br/>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            <span id="fontDisplay"></span>
+        </p>
+
+
+    </div>
+</body>
+</html>

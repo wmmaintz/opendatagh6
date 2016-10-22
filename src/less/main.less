@@ -1,0 +1,212 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name main.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the main attributes
+ **
+ ****************************************************************************/
+
+@import url('variables');
+@import url('mixins');
+
+// To secure correct behavior in older browsers,
+// set the CSS display property to block:
+header,
+section,
+footer,
+aside,
+article,
+figure {
+    display: block;
+}
+
+// ui.bootstrap requires this
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+    cursor: pointer;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Global Components in alphabetical order
+//////////////////////////////////////////////////////////////////////////////
+
+a {
+	color: @color-hyperlink;
+}
+
+a:hover,
+a:focus,
+a:active,
+a .active {
+    background-color: @color1;
+	color: darken(@brand-primary, 20%);
+	outline: inherit;
+}
+
+body {
+	.body-font;
+    -webkit-tap-highlight-color: @brand-primary;
+    .background-cover();
+    background-attachment: fixed;
+    background-image: url('../img/home/blue-smoke-wallpaper-hd.jpg');
+    margin: 0px;
+    padding: 0px;
+}
+
+// Restyled Primary Buttons
+
+.btn:focus,
+.btn:active,
+.btn:active:focus,
+.btn .active
+{
+	outline: 0px;
+}
+
+.btn-primary {
+	.button-variant(white; @brand-primary; @brand-primary);
+	.heading-font;
+	font-weight: 700;
+}
+
+.btn-variant {
+	.button-variant(@color3; @color1; @color2);
+	.heading-font;
+	font-weight: 700;
+}
+
+.btn-xl {
+	.button-variant(white; @brand-primary; @brand-primary);
+	.heading-font;
+	border-radius: 3px;
+	font-size: 18px;
+	font-weight: 700;
+	padding: 20px 40px;
+}
+
+.clear {
+    clear: both;
+}
+
+.container {
+    //float: center;
+    display: inline-block;
+    height: 100%;
+    margin: 0px auto;
+    overflow: auto;
+    padding: 2px;
+    text-align: center;
+    width: 100%;
+}
+ .vertical-scrollbar
+{
+   overflow-x: hidden; /*for hiding horizontal scroll bar*/
+   overflow-y: auto; /*for vertical scroll bar*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	.heading-font;
+	font-weight: 700;
+}
+
+.img-centered {
+	margin: 0px auto;
+}
+
+.jumbotron {
+    border-radius: 50px;
+    color: @color8;
+    //.opacGradient1(@firstColor; @secondColor; @thirdColor; @opacityLevel)
+    .opacGradient1(@color6; @color1; @color6; .9);
+}
+
+.ng-animate.item:not(.left):not(.right) {
+    -webkit-transition: 0s ease-in-out left;
+    transition: 0s ease-in-out left;
+}
+
+p {
+	font-size: 14px;
+	line-height: 1.75;
+
+    .large {
+        font-size: 16px;
+    }
+}
+
+pre {
+    background-color: @color1;
+    line-height: 1.1;
+    margin: 0px auto;
+    width: 50%;
+    z-index: 9999;
+
+    .stateDisplay {
+        //float: left;
+        align-content: flex-start;
+        bottom: 100px;
+        display: inline-block;
+        height: 90px;
+        overflow: hidden;
+        position: absolute;
+        text-align: left;
+        width: 300px;
+
+        p {
+            color: @brand-danger;
+            font-size: 12px;
+            overflow: hidden;
+        }
+    }
+}
+
+.row {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.text-muted {
+	color: @color7;
+}
+
+.text-primary {
+	color: @brand-primary;
+}
+
+
+// Highlight Color Customization
+
+// Insert this content after every element
+::-moz-selection {
+    background: @brand-primary;
+    text-shadow: none;
+}
+
+// Insert this content after every selected element
+::selection {
+    background: @brand-primary;
+    text-shadow: none;
+}
+
+// Selects the image that is selected by a user
+img::selection {
+    background: transparent;
+}
+
+img::-moz-selection {
+    background: transparent;
+}
+
+/*****************************************************************************
+ ** END OF FILE - main.less
+ ****************************************************************************/

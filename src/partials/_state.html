@@ -1,0 +1,22 @@
+<!doctype html>
+<!--
+/**
+* @ngdoc overview
+* @name _state.html
+*
+* @description
+* AngularJS partials view - state that appears at the bottom of every screen during DEV.
+* Identifies the state, the full URL, any parameters passed, and the provider.
+*
+*/
+-->
+
+<!-- Display the state, url, params, and provider -->
+<pre class="stateDisplay">
+State Display:<br/>
+    $state                    = [{{ $state.current.name }}]<br/>
+    $stateFullURL             = [{{ $state.$current.url.source }}]<br/>
+    $stateParams              = [{{ $stateParams }}]<br/>
+    $stateProvider            = [{{ $stateProvider }}]
+</pre>
+<br/><br/><br/><br/>

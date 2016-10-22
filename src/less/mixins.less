@@ -1,0 +1,209 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+
+@import url( 'variables' );
+
+// Define mixins
+//
+
+// Bootstrap Button Variant
+.button-variant(@color; @background; @border) {
+	color: @color;
+	background-color: @background;
+	border-color: @border;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active,
+	.open .dropdown-toggle& {
+		color: @color;
+		background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+	}
+	&:active,
+	&.active,
+	.open .dropdown-toggle& {
+		background-image: none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			background-color: @background;
+			border-color: @border;
+		}
+	}
+
+	.badge {
+		color: @background;
+		background-color: @color;
+	}
+}
+
+// Define gradients
+// Eliminate having to duplicate these same 5 lines for every gradient
+// Two color linear gradient background
+.linGradient1(@firstColor; @secondColor) {
+    background: -webkit-linear-gradient(@firstColor, @secondColor);
+    background:    -moz-linear-gradient(@firstColor, @secondColor);
+    background:     -ms-linear-gradient(@firstColor, @secondColor);
+    background:      -o-linear-gradient(@firstColor, @secondColor);
+    background:         linear-gradient(@firstColor, @secondColor);
+}
+
+// Three color linear gradient background
+.linGradient2(@firstColor; @secondColor; @thirdColor) {
+    background: -webkit-linear-gradient(@firstColor, @secondColor, @thirdColor);
+    background:    -moz-linear-gradient(@firstColor, @secondColor, @thirdColor);
+    background:     -ms-linear-gradient(@firstColor, @secondColor, @thirdColor);
+    background:      -o-linear-gradient(@firstColor, @secondColor, @thirdColor);
+    background:         linear-gradient(@firstColor, @secondColor, @thirdColor);
+}
+
+// Two color radial gradient background
+.radGradient1(@firstColor; @secondColor) {
+    background: -webkit-radial-gradient(@firstColor, @secondColor);
+    background:    -moz-radial-gradient(@firstColor, @secondColor);
+    background:     -ms-radial-gradient(@firstColor, @secondColor);
+    background:      -o-radial-gradient(@firstColor, @secondColor);
+    background:         radial-gradient(@firstColor, @secondColor);
+}
+
+// Three color radial gradient background
+.radGradient2(@firstColor; @secondColor; @thirdColor) {
+    background: -webkit-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:    -moz-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:     -ms-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:      -o-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:         radial-gradient(@firstColor, @secondColor, @thirdColor);
+}
+
+// Three color radial gradient background with an opacity level
+.opacGradient1(@firstColor; @secondColor; @thirdColor; @opacityLevel) {
+    @ieopacity: round(@opacityLevel * 100); // For IE8 and earlier.
+    background: -webkit-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:    -moz-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:     -ms-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:      -o-radial-gradient(@firstColor, @secondColor, @thirdColor);
+    background:         radial-gradient(@firstColor, @secondColor, @thirdColor);
+    opacity: @opacityLevel; // The lower the value, the more transparent (0.0 - 1.0).
+    filter: alpha( opacity=@ieopacity ); // For IE8 and earlier. Values from 0 - 100
+}
+
+// Takes 3 arguments:
+// Text Color, Background Color, and Border Color
+// nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+.nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor) {
+    .radGradient1(@center_background, @perimeter_background);
+	color: @textColor;
+    border: 2px solid @borderColor;
+    border-radius: 10px;
+        -webkit-transition: -webkit-radial-gradient .5s; /* Safari 3.1 to 6.0 */
+           -moz-transition:    -moz-radial-gradient .5s;
+            -ms-transition:     -ms-radial-gradient .5s;
+             -o-transition:      -o-radial-gradient .5s;
+                transition:         radial-gradient .5s;
+                transition: color 2s;
+                transition: border-radius .5s;
+
+}
+
+
+// NAVBAR MENU STUFF
+.clearMenu() {
+    .linGradient2(transparent; transparent; transparent);
+    border: .25px solid transparent;
+}
+
+.grayMenu() {
+    .linGradient2(@color2; @color5; @color7);
+    border: .25px solid @color8;
+}
+
+.footerBar() {
+    .linGradient2( @color7; @color5; @color5 );
+    border-top: .25px solid @color9;
+}
+
+
+.dropdown-menu {
+    background-color: transparent;
+    list-style: none;
+    margin-left: 0;
+    text-align: left;
+}
+
+
+// Define Background Cover
+.background-cover() {
+    background-attachment: fixed;
+    background-position: 50 50;
+    min-height: 100%;
+    min-width: 100%;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+// Define the various font selections
+.serif-font() {
+	font-family: "Droid Serif",
+                                          "Helvetica Neue",
+                                          "Helvetica",
+                                          "Arial",
+                                          "sans-serif";
+	text-transform: none;
+}
+
+.script-font() {
+	font-family: "Kaushan Script",
+                                          "Helvetica Neue",
+                                          "Helvetica",
+                                          "Arial",
+                                          "cursive";
+	text-transform: none;
+}
+
+.body-font() {
+	font-family: "Roboto Slab",
+                                          "Helvetica Neue",
+                                          "Helvetica",
+                                          "Arial",
+                                          "sans-serif";
+	text-transform: none;
+}
+
+.heading-font() {
+	font-family: "Montserrat",
+                                          "Helvetica Neue",
+                                          "Helvetica",
+                                          "Arial",
+                                          "sans-serif";
+	text-transform: uppercase;
+}
+
+.subheading-font() {
+    font-family: "Droid Serif",
+                                          "Helvetica Neue",
+                                          "Helvetica",
+                                          "Arial",
+                                          "sans-serif";
+	text-transform: none;
+}
+
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/

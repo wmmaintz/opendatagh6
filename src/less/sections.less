@@ -1,0 +1,350 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name sections.less
+ **
+ ** @description
+ ** LESS/CSS for each section within the app.
+ ** Utilizes Responsive Web Design and CSS3 features and functionality.
+ **
+ ****************************************************************************/
+
+@import url("variables");
+@import url("mixins");
+
+.container,
+.container-fluid {
+    border: 0px solid transparent;
+}
+
+section {
+    .linGradient2(@color2; @color5; transparent);
+    color: @color6;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    top: 0px;
+    font-size: 14pt;
+
+    .section-heading {
+        .heading-font;
+        margin-top: 60px;
+        overflow-x: wrap;
+        overflow-y: wrap;
+        text-shadow: 2px 3px 6px @color1;
+        word-wrap: break-word;
+        font-size: 20pt;
+    }
+
+    .section-subheading {
+        .subheading-font;
+        color: @color5;
+        font-style: italic;
+        font-weight: 400;
+        margin: 0px auto 0px;
+        text-shadow: 2px 2px 4px @color1;
+        text-transform: none;
+        word-wrap: break-word;
+        font-size: 16pt;
+    }
+
+    .theResult {
+        font-family: monospace;
+        font-style: normal;
+        font-weight: normal;
+        background-color: green;
+    }
+
+    //.privacyPolicy,
+    //.termsOfUse {
+    //    display: none;
+    //    overflow: hidden;
+    //    visibility: hidden;
+    //}
+
+} // ALL Sections
+
+//////////////////////////////////////////////////////////////////////////////
+// DIFFERENT SCREEN WIDTHS SUB-SECTION
+//////////////////////////////////////////////////////////////////////////////
+/**
+ ** Google & Bootstrap Device Sizes
+ **
+ ** 1440px - Large Desktop
+ ** 1200px - size_xl
+ ** 1072px - size_lg
+ ** 1024px - Normal Desktop
+ **  992px - size_md
+ **  768px - size_sm
+ **  768px - Tablet
+ **  425px - Large Mobile
+ **  375px - Medium Mobile
+ **  350px - size_xs
+ **  320px - Small Mobile
+ **
+ **/
+
+@media ( min-width: 1440px ) { // Minimum width: 1440px - Large Desktop
+	section {
+        .section-heading {
+            font-size: 50pt;
+        }
+
+        .section-subheading {
+            img {
+                size: 150%;
+            }
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 1200px ) and ( max-width: 1439px ) { // Minimum width: 1200px - size_xl
+	section {
+        .section-heading {
+            font-size: 50pt;
+        }
+
+	}
+} // ALL Sections
+
+@media ( min-width: 1072px ) and ( max-width: 1199px ) { // Minimum width: 1072px - size_lg
+	section {
+        .section-heading {
+            font-size: 50pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 1024px ) and ( max-width: 1071px ) { // Minimum width: 1024px - Normal Desktop
+	section {
+        .section-heading {
+            font-size: 48pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 992px ) and ( max-width: 1023px ) { // Minimum width: 992px - size_md
+	section {
+        .section-heading {
+            font-size: 48pt;
+        }
+	}
+   
+} // ALL Sections
+
+@media ( min-width: 768px ) and ( max-width: 991px ) { // Minimum width: 768px - size_sm - Tablet
+	section {
+        .section-heading {
+            font-size: 45pt;
+            margin-top: 50px;
+        }
+ 
+        .section-subheading {
+            font-size: 16pt;
+        }
+    }
+
+} // ALL Sections
+
+@media ( min-width: 425px ) and ( max-width: 767px ) { // Minimum width: 425px - Large Mobile
+	section {
+        .section-heading {
+            font-size: 30pt;
+            margin-top: 70px;
+        }
+        .section-subheading {
+            font-size: 20pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 375px ) and ( max-width: 424px ) { // Minimum width: 375px - Medium Mobile
+	section {
+        .section-heading {
+            font-size: 24pt;
+            margin-top: 70px;
+        }
+        .section-subheading {
+            font-size: 18pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 350px ) and ( max-width: 374px ) { // Minimum width: 350px - size_xs
+	section {
+        .section-heading {
+            font-size: 24pt;
+        }
+        .section-subheading {
+            font-size: 16pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 320px ) and ( max-width: 349px ) and (orientation: portrait) { // Minimum width: 320px - Small Mobile
+	section {
+        .section-heading {
+            font-size: 20pt;
+            margin-top: 60px;
+        }
+        .section-subheading {
+            font-size: 16pt;
+        }
+	}
+} // ALL Sections
+
+@media ( min-width: 1px ) and ( max-width: 319px ) { // Minimum width: 320px - Small Mobile
+	section {
+        display: none;
+	}
+} // ALL Sections
+
+//////////////////////////////////////////////////////////////////////////////
+// HOME SECTION
+//////////////////////////////////////////////////////////////////////////////
+.home-section {
+
+    .linGradient2(transparent; transparent; transparent);
+    //text-align: center;
+
+    .section-heading {
+        .serif-font;
+        font-style: italic;
+        padding: 0px 10px 0px;
+        color: @color8;
+        text-shadow: 2px 3px 4px @color5;
+    }
+    .section-subheading {
+        img {
+            margin: 0px auto 30px;
+            width: 90%;
+            max-width: 500px;
+        }
+    }
+
+    .calContainer {
+        display: inline-block;
+        height: 100%;
+        margin: 0px auto;
+        overflow: auto;
+        padding: 0px;
+        text-align: center;
+        width: 100%;
+
+        .calSubcontainer {
+            display: inline-block;
+            margin: 5px auto;
+            padding: 10px;
+
+            #calBox {
+                margin: 0px;
+                padding: 10px;
+                width: 100%;
+            }
+        }
+    }
+
+    // Defined within the javascript that produces each calendar
+    .calTable {
+        background-color: @color6;
+        border: 1px dotted @color9;
+        color: @color8;
+        display: inline-block;
+        font-size: 8pt;
+        margin: 5px auto;
+        opacity: 1;
+        overflow: hidden;
+        padding: 0px;
+
+        .monHdr {
+            font-size: 12pt;
+            margin: 0px auto;
+            text-align: center;
+        }
+
+        .wkdayHdr {
+            font-size: 10pt;
+            margin: 10px 20px;
+            padding: 2px;
+            text-align: center;
+        }
+
+        .calDayRow {
+            font-size: 8pt;
+            text-align: center;
+            width: 30px;
+        }
+
+        .hiLite {
+            background-color: @color9;
+            border-radius: 40%;
+            color: @color6;
+        }
+    }
+
+    #learnMore {
+        margin: 0px auto;
+        text-align: center;
+    }
+
+} // Section HOME
+
+//////////////////////////////////////////////////////////////////////////////
+// ABOUT OpenDataGH6 SECTION
+//////////////////////////////////////////////////////////////////////////////
+.about-section {
+    .linGradient2(@color7; @color8; transparent);
+
+    .about-text {
+        color: @color6;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .section-subheading {
+        color: @color5;
+    }
+
+} // Section ABOUT
+
+//////////////////////////////////////////////////////////////////////////////
+// ABOUT WEBSITE SECTION
+//////////////////////////////////////////////////////////////////////////////
+.website-section {
+    .linGradient2(@color7; @color8; transparent);
+
+    .about-text {
+        color: @color6;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .section-subheading {
+        color: @color3;
+    }
+
+    img {
+        height: 60px;
+        width: auto;
+    }
+} // Section WEBSITE
+
+//////////////////////////////////////////////////////////////////////////////
+// ACCOUNTS SECTION
+//////////////////////////////////////////////////////////////////////////////
+// TODO: Complete the Login/Account section
+.account-section {
+    background-color: white;
+    color: @color2;
+
+    button,
+    .btn,
+    .btn-primary {
+        background-color: @color2;
+        color: @color6;
+    }
+} // Section ACCOUNT
+
+/*****************************************************************************
+ ** END OF FILE - sections.less
+ ****************************************************************************/

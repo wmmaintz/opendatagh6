@@ -1,0 +1,93 @@
+/* JSON file partials */
+[
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    },
+    {
+        "id"        : 999,
+        "name"      : "",
+        "href"      : "img/photos/",
+        "dateTaken" : "MM/YY/YYYY  HH:MM PM",
+        "size"      : 9999,
+        "tags"      : ["",""],
+        "hilight"   : 0
+    }
+]

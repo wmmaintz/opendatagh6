@@ -1,0 +1,110 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name navbar.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the navigation bar
+ **
+ ****************************************************************************/
+
+@import url("variables");
+@import url("mixins");
+
+//////////////////////////////////////////////////////////////////////////////
+// NAVBAR menu
+//////////////////////////////////////////////////////////////////////////////
+
+.nav,
+.navbar-default,
+.navbar-right
+{
+    .grayMenu();
+
+    -moz-box-sizing: none;
+    -webkit-box-shadow: 0px 0px;
+    -webkit-box-sizing: none;
+    border: 0px;
+    box-shadow: 0px 0px;
+    box-sizing: none;
+    height: 55px;
+    margin-top: 0px;
+    z-index: 9999;
+
+    .navbar-toggle {
+        border: 2px solid @color1;
+    }
+
+    .menu-item {
+        //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+        .nav-gradient-pill(@color5; @color7; @color6; @color8);
+
+        border: 1px solid @color6;
+        border-radius: 25px;
+        font-size: 16px;
+        height: 50px;
+        margin-bottom: 0px;
+        margin-top: 2px;
+        padding: 13px;
+
+        &:active,
+        &.active,
+        &::selection,
+        &::-moz-selection {
+            //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+            .nav-gradient-pill(@color3 ;@color2; @color3; @color8);
+            border-radius: 10px;
+        }
+
+        &:hover,
+        &:focus {
+            //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+            .nav-gradient-pill(@color5;@color1;@color8;@color5);
+            border-radius: 10px;
+        }
+    }
+    .submenu-item {
+        //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+        .nav-gradient-pill(@color3; @color7; @color4; @color4);
+        background-color: black;
+        border-radius: 15px;
+
+        &:active,
+        &.active {
+            //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+            .nav-gradient-pill(@color6;@color8;@color1;@color6);
+        }
+
+        &:hover,
+        &:focus, {
+            //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
+            .nav-gradient-pill(@color5;@color1;@color8;@color6);
+        }
+    }
+
+    .dropdown-menu {
+        -webkit-box-shadow: 0px 0px;
+        background-color: transparent;
+        border: 10px solid transparent;
+                box-shadow: 0px 0px;
+        padding: 0px;
+    }
+}
+
+
+.navbar-collapse
+{
+    background-color: transparent;
+    color: @color7;
+
+    // Implement this search form by removing the hidden class and creating supporting logic
+    .navbar-form {
+        //margin-top: 10px;
+        border: 1px solid @color5;
+    }
+
+}
+
+/*****************************************************************************
+ ** END OF FILE - navbar.less
+ ****************************************************************************/

@@ -1,0 +1,252 @@
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name navbar.less
+ **
+ ** @description
+ ** CSS / LESS file defining the display attributes of the navigation bar
+ **
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name variables.less
+ **
+ ** @description
+ ** CSS / LESS variables to be imported into the other LESS files
+ **
+ ****************************************************************************/
+/**
+  ** Define color variables
+  **/
+/**
+ ** Google Device Widths
+ **
+ ** LDT - 1440px - Large Desktop
+ ** NDT - 1024px - Normal Desktop
+ ** TAB -  768px - Tablet
+ ** LMB -  425px - Large Mobile
+ ** MMB -  375px - Medium Mobile
+ ** SMB -  320px - Small Mobile
+ **
+ ** Bootstrap Screen Widths
+ **
+ ** @size_xl            : "1200px";
+ ** @size_lg            : "1072px";
+ ** @size_md            : "992px";
+ ** @size_sm            : "768px";
+ ** @size_xs            : "350px";
+ **
+ **/
+/*****************************************************************************
+ ** END OF FILE - variables.less
+ ****************************************************************************/
+/*****************************************************************************
+ **
+ ** @ngdoc overview
+ ** @name mixins.less
+ **
+ ** @description
+ ** CSS / LESS definitions to be imported into the other LESS files
+ **
+ ****************************************************************************/
+.dropdown-menu {
+  background-color: transparent;
+  list-style: none;
+  margin-left: 0;
+  text-align: left;
+}
+/*****************************************************************************
+ ** END OF FILE - mixins.less
+ ****************************************************************************/
+.nav,
+.navbar-default,
+.navbar-right {
+  background: -webkit-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -moz-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -ms-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: -o-linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  background: linear-gradient(#79bcb7, #ebe6da, #6d6e71);
+  border: 0.25px solid #231f20;
+  -moz-box-sizing: none;
+  -webkit-box-shadow: 0px 0px;
+  -webkit-box-sizing: none;
+  border: 0px;
+  box-shadow: 0px 0px;
+  box-sizing: none;
+  height: 55px;
+  margin-top: 0px;
+  z-index: 9999;
+}
+.nav .navbar-toggle,
+.navbar-default .navbar-toggle,
+.navbar-right .navbar-toggle {
+  border: 2px solid #005949;
+}
+.nav .menu-item,
+.navbar-default .menu-item,
+.navbar-right .menu-item {
+  background: -webkit-radial-gradient(#6d6e71, #414042);
+  background: -moz-radial-gradient(#6d6e71, #414042);
+  background: -ms-radial-gradient(#6d6e71, #414042);
+  background: -o-radial-gradient(#6d6e71, #414042);
+  background: radial-gradient(#6d6e71, #414042);
+  color: #ebe6da;
+  border: 2px solid #231f20;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border: 1px solid #414042;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 50px;
+  margin-bottom: 0px;
+  margin-top: 2px;
+  padding: 13px;
+}
+.nav .menu-item:active,
+.navbar-default .menu-item:active,
+.navbar-right .menu-item:active,
+.nav .menu-item.active,
+.navbar-default .menu-item.active,
+.navbar-right .menu-item.active,
+.nav .menu-item::selection,
+.navbar-default .menu-item::selection,
+.navbar-right .menu-item::selection,
+.nav .menu-item::-moz-selection,
+.navbar-default .menu-item::-moz-selection,
+.navbar-right .menu-item::-moz-selection {
+  background: -webkit-radial-gradient(#79bcb7, #007fa1);
+  background: -moz-radial-gradient(#79bcb7, #007fa1);
+  background: -ms-radial-gradient(#79bcb7, #007fa1);
+  background: -o-radial-gradient(#79bcb7, #007fa1);
+  background: radial-gradient(#79bcb7, #007fa1);
+  color: #007fa1;
+  border: 2px solid #231f20;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border-radius: 10px;
+}
+.nav .menu-item:hover,
+.navbar-default .menu-item:hover,
+.navbar-right .menu-item:hover,
+.nav .menu-item:focus,
+.navbar-default .menu-item:focus,
+.navbar-right .menu-item:focus {
+  background: -webkit-radial-gradient(#005949, #231f20);
+  background: -moz-radial-gradient(#005949, #231f20);
+  background: -ms-radial-gradient(#005949, #231f20);
+  background: -o-radial-gradient(#005949, #231f20);
+  background: radial-gradient(#005949, #231f20);
+  color: #ebe6da;
+  border: 2px solid #ebe6da;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  border-radius: 10px;
+}
+.nav .submenu-item,
+.navbar-default .submenu-item,
+.navbar-right .submenu-item {
+  background: -webkit-radial-gradient(#6d6e71, #94327e);
+  background: -moz-radial-gradient(#6d6e71, #94327e);
+  background: -ms-radial-gradient(#6d6e71, #94327e);
+  background: -o-radial-gradient(#6d6e71, #94327e);
+  background: radial-gradient(#6d6e71, #94327e);
+  color: #007fa1;
+  border: 2px solid #94327e;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+  background-color: black;
+  border-radius: 15px;
+}
+.nav .submenu-item:active,
+.navbar-default .submenu-item:active,
+.navbar-right .submenu-item:active,
+.nav .submenu-item.active,
+.navbar-default .submenu-item.active,
+.navbar-right .submenu-item.active {
+  background: -webkit-radial-gradient(#231f20, #005949);
+  background: -moz-radial-gradient(#231f20, #005949);
+  background: -ms-radial-gradient(#231f20, #005949);
+  background: -o-radial-gradient(#231f20, #005949);
+  background: radial-gradient(#231f20, #005949);
+  color: #414042;
+  border: 2px solid #414042;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+}
+.nav .submenu-item:hover,
+.navbar-default .submenu-item:hover,
+.navbar-right .submenu-item:hover,
+.nav .submenu-item:focus,
+.navbar-default .submenu-item:focus,
+.navbar-right .submenu-item:focus {
+  background: -webkit-radial-gradient(#005949, #231f20);
+  background: -moz-radial-gradient(#005949, #231f20);
+  background: -ms-radial-gradient(#005949, #231f20);
+  background: -o-radial-gradient(#005949, #231f20);
+  background: radial-gradient(#005949, #231f20);
+  color: #ebe6da;
+  border: 2px solid #414042;
+  border-radius: 10px;
+  -webkit-transition: -webkit-radial-gradient 0.5s;
+  /* Safari 3.1 to 6.0 */
+  -moz-transition: -moz-radial-gradient 0.5s;
+  -ms-transition: -ms-radial-gradient 0.5s;
+  -o-transition: -o-radial-gradient 0.5s;
+  transition: radial-gradient 0.5s;
+  transition: color 2s;
+  transition: border-radius 0.5s;
+}
+.nav .dropdown-menu,
+.navbar-default .dropdown-menu,
+.navbar-right .dropdown-menu {
+  -webkit-box-shadow: 0px 0px;
+  background-color: transparent;
+  border: 10px solid transparent;
+  box-shadow: 0px 0px;
+  padding: 0px;
+}
+.navbar-collapse {
+  background-color: transparent;
+  color: #6d6e71;
+}
+.navbar-collapse .navbar-form {
+  border: 1px solid #ebe6da;
+}
+/*****************************************************************************
+ ** END OF FILE - navbar.less
+ ****************************************************************************/
+/*# sourceMappingURL=navbar.css.map */

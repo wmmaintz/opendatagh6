@@ -1,0 +1,204 @@
+<!doctype html>
+<!--
+/**
+* @ngdoc overview
+* @name _header.html
+*
+* @description
+* AngularJS partials view - header that appears at the top of every screen.
+* Contains the navigation bar.
+*
+*/
+        ng-class="{clearMenu: clearmenuclass, grayMenu: !(clearmenuclass)}"
+
+Topics to be included in menu: 
+
+Main Page
+
+    Volunteer Portal
+        Application for volunteering
+        My Account (Login Required)
+            Scheduling Calendar
+            Communication Tool
+            Volunteer Resources
+                Emergency contact information
+                    Hospitals
+                    Urgent Care
+                    Organizers associated with program.
+                Index of providers of other services with (UP TO DATE) contact information and links.
+                Course Material
+                Online Community
+                    Live Chat
+                    Forums
+                        Volunteers shares storied of challenges and resolutions to help other volunteers in similar situations.
+    Homeless Resources
+        Emergency contact information
+            Hospitals
+            Urgent Care
+            Police
+            Any other public assistance programs.
+        Mission Statement
+            What services we provide or facilitate
+            What services we do not provide
+                Index of providers of other services with (UP TO DATE) contact information and links.
+                    There should be a "suggest a service" option to add or update information.
+        Request for assistance form
+        My Account (Login Required)
+            Scheduling Calendar
+                Reminders for scheduled events
+                    txt or email
+            Communication Tool
+                Organizers associated with program.
+                Email / Live chat with volunteers.
+            Index of providers of other services with (UP TO DATE) contact information and links.
+            Course Material
+            Online Community
+                Live Chat
+                Forums
+                    Volunteers shares storied of challenges and resolutions to help other volunteers in similar situations.
+        Journal
+            Allows participants to record their experiences within the system.
+            Encourage participants to log major events and changes related to the service.
+            Private / shared entries
+                Users can share entries with Administrators to help track their experiences (feedback).
+                Users can share entries with Volunteers to share their perspective and experience.
+                Users can share entries to the forum (semi-public)
+                    This could be good for learning experiences or testimonials.
+
+-->
+<header>
+    <nav class="nav navbar-default navbar-fixed-top nav-pills">
+        <div class="container-fluid">
+            
+            <div class="navbar-header">
+                <button type="button hidden" 
+                        class="navbar-toggle collapsed" 
+                        data-toggle="collapse" 
+                        data-target="#expandedNavbar" 
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand menu-item" 
+                   ui-sref="home"
+                   ui-sref-active="active">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <span class="menu-text">&nbsp;ResEx</span>
+                </a>
+            </div>    
+
+            <div class="navbar-collapse collapse" id="expandedNavbar">
+
+                <!-- TODO: implement this search form by removing the hidden class and creating supporting logic -->
+                <form class="navbar-left navbar-form hidden" role="search">
+                    <div class="input-group form-group">
+                        <input type="text" class="form-control" placeholder="Search this website" name="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                <span class="menu-text">&nbsp;Search</span>
+                            </button>
+                        </div>
+                    </div>
+                </form> <!-- Website Search function -->
+
+                <ul class="nav navbar-default nav-pills navbar-right">
+
+                    <!-- HOME -->
+                    <li ui-sref-active="active" role="presentation" class="hidden">
+                        <a ui-sref="home"         
+                            data-ng-class="{active:isActive('/')}"></a>
+                    </li>
+
+                    <!-- Homeless Resources -->
+                    <li role="presentation" ng-class="{active: $state.includes('links')}">
+                        <a class="menu-item"
+                            ui-sref="homeless">
+                            <span class="glyphicon glyphicon-link"></span>
+                            <span class="menu-text">&nbsp;Homeless</span>
+                        </a>
+                    </li> <!-- End of Links -->
+
+                    <!-- Facility Resources -->
+                    <li role="presentation" ng-class="{active: $state.includes('links')}">
+                        <a class="menu-item"
+                            ui-sref="facility">
+                            <span class="glyphicon glyphicon-link"></span>
+                            <span class="menu-text">&nbsp;Facilities</span>
+                        </a>
+                    </li> <!-- End of Links -->
+
+
+                    <!-- Cascading Menu -->
+                    <li ui-sref-active="active" 
+                        role="presentation" 
+                        class="dropdown" 
+                        ng-class="{active: $state.includes('about*')}">
+
+                        <a class="dropdown-toggle menu-item"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-expanded="true"
+                            aria-haspopup="true"
+                            >
+                            <!-- data-ng-class="{active:isActive('/about')}" -->
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            <span class="menu-text">&nbsp;Cascade</span>
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li ui-sref-active="active">
+                                <a class="submenu-item"
+                                   ui-sref="submenu1"
+                                   ui-sref-active="active"
+                                   data-ng-class="{active:isActive('submenu1')}">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    <span class="menu-text">&nbsp;Submenu1</span>
+                                </a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a class="submenu-item"
+                                   ui-sref="submenu2"
+                                   ui-sref-active="active"
+                                   data-ng-class="{active:isActive('submenu2')}">
+                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                    <span class="menu-text">&nbsp;Submenu2</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li> <!-- End of Cascading Menu -->
+
+                    <!-- TODO: implement login function by removing the hidden class and creating supporting logic -->
+                    <!-- Login/Logoff options -->
+                    <li role="presentation" class="dropdown hidden" >
+                        <a class="dropdown-toggle menu-item" ng-class="{active: $state.includes('login')}" 
+                            data-toggle="dropdown">
+
+                            <span ng-show="{{loggedIn}}">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                <span class="menu-text">&nbsp;Logout</span>
+                            </span>
+
+                            <span ng-hide="{{loggedIn}}">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                <span class="menu-text">&nbsp;Login</span>
+                            </span>
+
+                            <span class="caret"></span>&nbsp;
+                        </a>
+
+                    </li> <!-- End of Login/Logoff options -->
+
+                    <li ui-view="hint" class="navbar-text pull-right"></li>
+
+                </ul> <!-- Right-side menu items -->
+
+            </div>
+
+        </div>
+
+    </nav>
+</header>
