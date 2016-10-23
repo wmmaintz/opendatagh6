@@ -31,6 +31,7 @@
     "angularjs": "0.0.1",
     "bower": "^1.7.7",
     "browser-sync": "^2.13.0",
+    "checklist-model": "^0.10.0",
     "child_process": "^1.0.2",
     "component": "^1.1.0",
     "del": "^2.2.2",
@@ -94,6 +95,7 @@
     "st": "^1.2.0",
     "through2": "^2.0.1",
     "ui-grid": "0.0.0",
+    "validate": "^3.0.1",
     "waf": "0.0.0"
   },
   "engines": {

@@ -42,26 +42,53 @@
                     url: '/facility'
                 })
 
-                /* homeless */
-                .state('homeless', {
-                    controller: 'homelessController',
-                    templateUrl: 'partials/homeless/homeless.html',
-                    url: '/homeless'
+                /* client */
+                .state('client', {
+                    controller: 'clientController',
+                    templateUrl: 'partials/client/client.html',
+                    url: '/client'
+                })
+
+                /* client2 */
+                .state('client2', {
+                    controller: 'clientController',
+                    templateUrl: 'partials/client/client2.html',
+                    url: '/client2'
+                })
+
+                /* addClient */
+                .state('addClient', {
+                    controller: 'clientController',
+                    templateUrl: 'partials/client/addClient.html',
+                    url: '/addClient'
                 })
 
                 /* volunteers */
                 .state('volunteer', {
                     controller: 'volunteerController',
-                    templateUrl: 'partials/volunteer/volunteer.carousel.html',
+                    templateUrl: 'partials/volunteer/volunteer.html',
                     url: '/volunteer'
                 })
 
+                /* addVolunteer */
+                .state('addVolunteer', {
+                    controller: 'volunteerController',
+                    templateUrl: 'partials/volunteer/addVolunteer.html',
+                    url: '/addVolunteer'
+                })
 
-                /* Register */
-                .state('register', {
-                    controller: 'userController',
-                    templateUrl: 'partials/account/register.html',
-                    url: '/register'
+                /* sample */
+                .state('sample', {
+                    controller: 'sampleController',
+                    templateUrl: 'partials/sample/sample.html',
+                    url: '/sample'
+                })
+
+                /* sample */
+                .state('sample2', {
+                    controller: 'sampleController',
+                    templateUrl: 'partials/sample/sample2.html',
+                    url: '/sample2'
                 })
 
                 /* Login */
@@ -84,7 +111,7 @@
                     */
                     .when('/facility/:facilityName', '/partials/facility/:id')
                     .when('/volunteer/:volunteerName', '/partials/volunteer/:id')
-                    .when('/homeless/:homelessName', '/partials/homeless/:id')
+                    .when('/client/:clientName', '/partials/client/:id')
                     /*
                     ** If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
                     */

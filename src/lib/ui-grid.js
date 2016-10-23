@@ -7,7 +7,7 @@
   'use strict';
   angular.module('ui.grid.i18n', []);
   angular.module('ui.grid', ['ui.grid.i18n']);
-}());
+})();
 (function () {
   'use strict';
 
@@ -234,7 +234,7 @@
     }
   });
 
-}());
+})();
 
 angular.module('ui.grid').directive('uiGridCell', ['$compile', '$parse', 'gridUtil', 'uiGridConstants', function ($compile, $parse, gridUtil, uiGridConstants) {
   var uiGridCell = {
@@ -867,7 +867,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
 
 }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -903,7 +903,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
       }
     };
   }]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -986,7 +986,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     return uiGridFooterCell;
   }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -1052,7 +1052,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     };
   }]);
 
-}());
+})();
 (function () {
   'use strict';
 
@@ -1090,7 +1090,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     };
   }]);
 
-}());
+})();
 (function(){
   'use strict';
 
@@ -1126,7 +1126,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     };
   }]);
 
-}());
+})();
 (function(){
   'use strict';
 
@@ -1513,7 +1513,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     return uiGridHeaderCell;
   }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -1660,7 +1660,7 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
     };
   }]);
 
-}());
+})();
 
 (function(){
 
@@ -2060,7 +2060,7 @@ function (gridUtil, uiGridConstants, uiGridGridMenuService, i18nService) {
 
 }]);
 
-}());
+})();
 
 (function(){
 
@@ -2373,7 +2373,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
   return uiGridMenuItem;
 }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -2722,7 +2722,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
       } // End directive function
     ]); //End directive
   }); // End angular foreach
-}());
+})();
 
 (function () {
   'use strict';
@@ -2913,7 +2913,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
 
   }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -2984,7 +2984,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
     };
   }]);
 
-}());
+})();
 (function(){
 // 'use strict';
 
@@ -3064,7 +3064,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
     };
   }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -3206,7 +3206,7 @@ function ($compile, $timeout, $window, $document, gridUtil, uiGridConstants, i18
     }
   ]);
 
-}());
+})();
 
 (function() {
 
@@ -3220,7 +3220,7 @@ angular.module('ui.grid')
   };
 });
 
-}());
+})();
 (function () {
   'use strict';
 
@@ -3572,7 +3572,7 @@ function uiGridDirective($compile, $templateCache, $timeout, $window, gridUtil, 
   };
 }
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -3673,7 +3673,7 @@ function uiGridDirective($compile, $templateCache, $timeout, $window, gridUtil, 
       }
     };
   }]);
-}());
+})();
 
 (function(){
 
@@ -6241,7 +6241,7 @@ angular.module('ui.grid')
 
 }]);
 
-}());
+})();
 
 (function () {
 
@@ -6625,7 +6625,7 @@ angular.module('ui.grid')
 
       }]);
 
-}());
+})();
 
 (function(){
 
@@ -7593,7 +7593,7 @@ angular.module('ui.grid')
   return GridColumn;
 }]);
 
-}());
+})();
 
   (function(){
 
@@ -8099,7 +8099,7 @@ angular.module('ui.grid')
 
 }]);
 
-}());
+})();
 
 (function(){
 
@@ -8893,7 +8893,7 @@ angular.module('ui.grid')
   return GridRenderContainer;
 }]);
 
-}());
+})();
 
 (function(){
 
@@ -9117,7 +9117,7 @@ angular.module('ui.grid')
   return GridRow;
 }]);
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -9169,7 +9169,7 @@ angular.module('ui.grid')
       return GridRowColumn;
     }
   ]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid')
@@ -9336,7 +9336,7 @@ angular.module('ui.grid')
 
 
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -9554,7 +9554,7 @@ angular.module('ui.grid')
       return service;
     }]);
 
-}());
+})();
 
 (function() {
 
@@ -9950,7 +9950,7 @@ module.service('rowSearcher', ['gridUtil', 'uiGridConstants', function (gridUtil
   return rowSearcher;
 }]);
 
-}());
+})();
 
 (function() {
 
@@ -10444,7 +10444,7 @@ module.service('rowSorter', ['$parse', 'uiGridConstants', function ($parse, uiGr
   return rowSorter;
 }]);
 
-}());
+})();
 
 (function() {
 
@@ -10772,7 +10772,7 @@ module.service('gridUtil', ['$log', '$window', '$document', '$http', '$templateC
       return function() {
           return seedId += 1;
       };
-    }()),
+    })(),
 
 
     /**
@@ -11883,7 +11883,7 @@ module.filter('px', function() {
   };
 });
 
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -11971,7 +11971,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function(){
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12048,7 +12048,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function ($provide) {
@@ -12155,7 +12155,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12268,7 +12268,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12351,7 +12351,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
 }]);
-}());
+})();
 
 /**
  * Translated by: R. Salarmehr
@@ -12439,7 +12439,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12507,7 +12507,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12620,7 +12620,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function ($provide) {
@@ -12683,7 +12683,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12751,7 +12751,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12848,7 +12848,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function() {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -12929,7 +12929,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13001,7 +13001,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13084,7 +13084,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13191,7 +13191,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13298,7 +13298,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13405,7 +13405,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
 }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13512,7 +13512,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
 }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13619,7 +13619,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13726,7 +13726,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13786,7 +13786,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13858,7 +13858,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -13940,7 +13940,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -14047,7 +14047,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 (function () {
   angular.module('ui.grid').config(['$provide', function($provide) {
     $provide.decorator('i18nService', ['$delegate', function($delegate) {
@@ -14153,7 +14153,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 /**
  * @ngdoc overview
@@ -14452,7 +14452,7 @@ module.filter('px', function() {
   } );
 
 
-}());
+})();
 (function() {
   angular.module('ui.grid').config(['$provide', function($provide) {
     $provide.decorator('i18nService', ['$delegate', function($delegate) {
@@ -14558,7 +14558,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function() {
   angular.module('ui.grid').config(['$provide', function($provide) {
@@ -14630,7 +14630,7 @@ module.filter('px', function() {
       return $delegate;
     }]);
   }]);
-}());
+})();
 
 (function() {
   'use strict';
@@ -14700,7 +14700,7 @@ module.filter('px', function() {
       }
     };
   }]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -15827,7 +15827,7 @@ module.filter('px', function() {
       };
     }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -17111,7 +17111,7 @@ module.filter('px', function() {
       }]);
 
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -17670,7 +17670,7 @@ module.filter('px', function() {
         };
       }]);
 
-}());
+})();
 
 /* global console */
 
@@ -18949,7 +18949,7 @@ module.filter('px', function() {
       };
     }
   ]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -20218,7 +20218,7 @@ module.filter('px', function() {
     };
   }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -20968,7 +20968,7 @@ module.filter('px', function() {
       };
     }
   ]);
-}());
+})();
 
 (function() {
   'use strict';
@@ -21513,7 +21513,7 @@ module.filter('px', function() {
       };
     }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -22088,7 +22088,7 @@ module.filter('px', function() {
         }
       };
     }]);
-}());
+})();
 
 (function() {
   'use strict';
@@ -22542,7 +22542,7 @@ module.filter('px', function() {
       };
     }
   ]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -22789,7 +22789,7 @@ module.filter('px', function() {
     }]);
 
 
-}());
+})();
 
 (function(){
   'use strict';
@@ -23353,7 +23353,7 @@ module.filter('px', function() {
     return resizer;
   }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -24063,7 +24063,7 @@ module.filter('px', function() {
         };
       }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -24893,7 +24893,7 @@ module.filter('px', function() {
       };
     }
   ]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -25869,7 +25869,7 @@ module.filter('px', function() {
     };
   }]);
 
-}());
+})();
 
 (function () {
   'use strict';
@@ -27502,7 +27502,7 @@ module.filter('px', function() {
         }
       };
     }]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -27717,7 +27717,7 @@ module.filter('px', function() {
       }
     };
   }]);
-}());
+})();
 
 (function () {
   'use strict';
@@ -28302,7 +28302,7 @@ module.filter('px', function() {
       }
     };
   }]);
-}());
+})();
 
 angular.module('ui.grid').run(['$templateCache', function($templateCache) {
   'use strict';

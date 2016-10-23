@@ -28,7 +28,7 @@ angular
                     $rootScope.debug = debug;
                     $rootScope.endPoint = 'http://localhost:3000';
                 } else {
-                    $rootScope.endPoint = 'http://maintz.com';
+                    $rootScope.endPoint = 'http://resex.org';
                 }    
             }
         ]);

@@ -65,20 +65,21 @@
     }
     .submenu-item {
         //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
-        .nav-gradient-pill(@color3; @color7; @color4; @color4);
-        background-color: black;
+        .nav-gradient-pill(@color5; @color7; @color6; @color8);
         border-radius: 15px;
 
         &:active,
-        &.active {
+        &.active,
+        &::selection,
+        &::-moz-selection {
             //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
-            .nav-gradient-pill(@color6;@color8;@color1;@color6);
+            .nav-gradient-pill(@color3 ;@color2; @color5; @color8);
         }
 
         &:hover,
         &:focus, {
             //nav-gradient-pill(@textColor; @center_background; @perimeter_background; @borderColor)
-            .nav-gradient-pill(@color5;@color1;@color8;@color6);
+            .nav-gradient-pill(@color5;@color1;@color8;@color5);
         }
     }
 

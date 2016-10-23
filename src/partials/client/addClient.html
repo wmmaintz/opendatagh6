@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+/*
+ * @ngdoc overview
+ * @name client.html
+ *
+ * @description
+ * AngularJS partials view - Client screen.
+ *
+ */
+-->
+
+<section class="client-section">
+    
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 text-center">
+            <div class="section-heading">Add A Client</div>
+            <div class="section-subheading">============ </div>
+        </div>
+    </div>
+    <br/>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-10 text-center">
+                <form name="addClientForm">
+                    <table style="margin: auto; padding: 10px; width=90%;">
+                        <tr>
+                            <td class="text-left">Client Id:</td>
+                            <td><input type="text" ng-model="client.clientId"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">First name:</td>
+                            <td><input type="text" ng-model="client.firstName"></td>
+                        </tr>                        
+                        <tr>
+                            <td class="text-left">Last name:</td>
+                            <td><input type="text" ng-model="client.lastName"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Middle name:</td>
+                            <td><input type="text" ng-model="client.middleName"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Gender:</td>
+                            <td><input type="radio" ng-model="client.gender" value="male" checked> Male&nbsp;
+                                <input type="radio" ng-model="client.gender" value="female"> Female&nbsp;
+                                <input type="radio" ng-model="client.gender" value="other"> Other
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Race:</td>
+                            <td>
+                                <select ng-model="client.race">
+                                    <option value="White">White</option>
+                                    <option value="Black">Black or African-American</option>
+                                    <option value="Hispanic">Hispanic</option>
+                                    <option value="Asian ">Asian </option>
+                                    <option value="NativeIndian">American Indian or Alaska Native</option>
+                                    <option value="Hawaiian">Native Hawaiian or Other Pacific Islander</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">SSN:</td>
+                            <td><input type="text" ng-model="client.ssn"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Address Line1:</td>
+                            <td><input type="text" ng-model="client.AddrLine1"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Address Line2:</td>
+                            <td><input type="text" ng-model="client.AddrLine2"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">City:</td>
+                            <td><input type="text" ng-model="client.City"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">County:</td>
+                            <td><input type="text" ng-model="client.County"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">State:</td>
+                            <td><input type="text" ng-model="client.State"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Zipcode:</td>
+                            <td><input type="text" ng-model="client.Zipcode"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Vet Status:</td>
+                            <td><input type="radio" ng-model="client.veteranStatus" ng-value="0" checked> No &nbsp;
+                                <input type="radio" ng-model="client.veteranStatus" ng-value="1"> Yes
+                            </td>
+                        </tr>
+                        <tr ng-show="client.veteranStatus">
+                            <td class="text-left">Honorable Discharge:</td>
+                            <td><input type="radio" ng-model="client.dischargeStatus" ng-value="0"> No &nbsp;
+                                <input type="radio" ng-model="client.dischargeStatus" ng-value="1" checked> Yes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Email:</td>
+                            <td><input type="email" ng-model="client.email"></td>
+                        </tr>
+                    </table> 
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br/><br/><br/><br/><br/><br/>
+    
+</section>

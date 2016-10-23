@@ -26,7 +26,6 @@ var debug = true;
                 'ui.bootstrap',
                 'ui.bootstrap.carousel',
                 'ui.bootstrap.progressbar',
-                'ui.calendar',
                 'ui.grid',
                 'ui.grid.edit',
                 'ui.grid.cellNav',

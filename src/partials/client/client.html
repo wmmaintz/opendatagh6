@@ -1,0 +1,84 @@
+<!doctype html>
+<!--
+/*
+ * @ngdoc overview
+ * @name client.html
+ *
+ * @description
+ * AngularJS partials view - Client screen.
+ *
+ */
+-->
+
+<section class="client-section">
+    
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 text-center">
+            <div class="section-heading">Client Resources</div>
+            <div class="section-subheading">================= </div>
+        </div>
+    </div>
+    <br/>
+
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-12" style="margin: auto;">
+                <h4>Existing Clients:</h4>
+
+                <table style="border: 1px dotted grey; padding: 10px; margin:auto;">
+                    <tr>
+                        <th>Select</th>
+                        <th>Name</th>
+                        <th>Client Id</th>
+                        <th>SSN</th>
+                        <th>Gender</th>
+                        <th>Race</th>
+                        <th>Vet Status</th>
+                        <th>Address1</th>
+                        <th>City, St</th>
+                        <th>Zip</th>
+                    </tr>
+                    <tr for ng-repeat="client in clients">
+                        <td><input id="rbSelect" type="button" ng-click="selectClient(client.clientId)"></td>
+                        <td>{{client.lastName}}, {{client.firstName}} {{client.middleName}}</td>
+                        <td>{{client.clientId}}</td>
+                        <td>{{client.ssn}}</td>
+                        <td>{{client.gender}}</td>
+                        <td>{{client.race}}</td>
+                        <td>{{client.veteranStatus}}</td>
+                        <td>{{client.address1}}</td>
+                        <td>{{client.city}}, {{client.st}}</td>
+                        <td>{{client.zipCode}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <br/>
+                    <h4>Either select one of the above clients or add a new client.</h4>
+                    <br/>
+                    <a id="addClient" class="btn btn-primary text-center" href="#/addClient">
+                        <span>Add Client</span>
+                    </a>
+                </div>
+            </div>  
+
+            <div class="row" ng-show="clientSelected">
+                <div class="col-sm-12 text-center">
+                    <label class="primary">Desired location of facility:</label>
+                    <select ng-model="targetLocation" width="200" 
+                        style="width: 200px;">
+                        <option value="agcyNorth">North</option>
+                        <option value="agcySouth">South</option>
+                        <option value="agcyEast">East</option>
+                        <option value="agcyWest">West</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br/><br/><br/><br/><br/><br/>
+    
+</section>

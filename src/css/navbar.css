@@ -165,13 +165,13 @@
 .nav .submenu-item,
 .navbar-default .submenu-item,
 .navbar-right .submenu-item {
-  background: -webkit-radial-gradient(#6d6e71, #94327e);
-  background: -moz-radial-gradient(#6d6e71, #94327e);
-  background: -ms-radial-gradient(#6d6e71, #94327e);
-  background: -o-radial-gradient(#6d6e71, #94327e);
-  background: radial-gradient(#6d6e71, #94327e);
-  color: #007fa1;
-  border: 2px solid #94327e;
+  background: -webkit-radial-gradient(#6d6e71, #414042);
+  background: -moz-radial-gradient(#6d6e71, #414042);
+  background: -ms-radial-gradient(#6d6e71, #414042);
+  background: -o-radial-gradient(#6d6e71, #414042);
+  background: radial-gradient(#6d6e71, #414042);
+  color: #ebe6da;
+  border: 2px solid #231f20;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */
@@ -181,7 +181,6 @@
   transition: radial-gradient 0.5s;
   transition: color 2s;
   transition: border-radius 0.5s;
-  background-color: black;
   border-radius: 15px;
 }
 .nav .submenu-item:active,
@@ -189,14 +188,20 @@
 .navbar-right .submenu-item:active,
 .nav .submenu-item.active,
 .navbar-default .submenu-item.active,
-.navbar-right .submenu-item.active {
-  background: -webkit-radial-gradient(#231f20, #005949);
-  background: -moz-radial-gradient(#231f20, #005949);
-  background: -ms-radial-gradient(#231f20, #005949);
-  background: -o-radial-gradient(#231f20, #005949);
-  background: radial-gradient(#231f20, #005949);
-  color: #414042;
-  border: 2px solid #414042;
+.navbar-right .submenu-item.active,
+.nav .submenu-item::selection,
+.navbar-default .submenu-item::selection,
+.navbar-right .submenu-item::selection,
+.nav .submenu-item::-moz-selection,
+.navbar-default .submenu-item::-moz-selection,
+.navbar-right .submenu-item::-moz-selection {
+  background: -webkit-radial-gradient(#79bcb7, #ebe6da);
+  background: -moz-radial-gradient(#79bcb7, #ebe6da);
+  background: -ms-radial-gradient(#79bcb7, #ebe6da);
+  background: -o-radial-gradient(#79bcb7, #ebe6da);
+  background: radial-gradient(#79bcb7, #ebe6da);
+  color: #007fa1;
+  border: 2px solid #231f20;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */
@@ -219,7 +224,7 @@
   background: -o-radial-gradient(#005949, #231f20);
   background: radial-gradient(#005949, #231f20);
   color: #ebe6da;
-  border: 2px solid #414042;
+  border: 2px solid #ebe6da;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */

@@ -65,12 +65,12 @@
   border: 0px solid transparent;
 }
 section {
-  background: -webkit-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -moz-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -ms-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -o-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: linear-gradient(#79bcb7, #ebe6da, transparent);
-  color: #414042;
+  background: -webkit-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -moz-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -ms-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -o-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: linear-gradient(#79bcb7, #ffffff, #ffffff);
+  color: #79bcb7;
   margin-bottom: 0px;
   margin-top: 0px;
   padding: 0px;
@@ -89,7 +89,7 @@ section .section-heading {
 }
 section .section-subheading {
   font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
-  color: #ebe6da;
+  color: #007fa1;
   font-style: italic;
   font-weight: 400;
   margin: 0px auto 0px;
@@ -98,11 +98,45 @@ section .section-subheading {
   word-wrap: break-word;
   font-size: 16pt;
 }
-section .theResult {
-  font-family: monospace;
-  font-style: normal;
-  font-weight: normal;
-  background-color: green;
+section table tr {
+  padding: 10px;
+  border: 1px solid #6d6e71;
+}
+.home-section {
+  color: #231f20;
+}
+.home-section .section-heading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: none;
+  font-style: italic;
+  padding: 0px 10px 0px;
+  color: #231f20;
+  text-shadow: 2px 3px 4px #ebe6da;
+}
+.home-section .section-subheading img {
+  margin: 0px auto 30px;
+  width: 90%;
+  max-width: 500px;
+}
+.home-section .homeList ul li {
+  text-align: left;
+}
+.client-section {
+  color: #231f20;
+}
+.facility-section {
+  color: #231f20;
+}
+.volunteer-section {
+  color: #231f20;
+}
+.volunteer-section table {
+  padding: 10px;
+  border: 1px solid #6d6e71;
+}
+.account-section {
+  background-color: white;
+  color: #231f20;
 }
 /**
  ** Google & Bootstrap Device Sizes
@@ -196,125 +230,6 @@ section .theResult {
   section {
     display: none;
   }
-}
-.home-section {
-  background: -webkit-linear-gradient(transparent, transparent, transparent);
-  background: -moz-linear-gradient(transparent, transparent, transparent);
-  background: -ms-linear-gradient(transparent, transparent, transparent);
-  background: -o-linear-gradient(transparent, transparent, transparent);
-  background: linear-gradient(transparent, transparent, transparent);
-}
-.home-section .section-heading {
-  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
-  text-transform: none;
-  font-style: italic;
-  padding: 0px 10px 0px;
-  color: #231f20;
-  text-shadow: 2px 3px 4px #ebe6da;
-}
-.home-section .section-subheading img {
-  margin: 0px auto 30px;
-  width: 90%;
-  max-width: 500px;
-}
-.home-section .calContainer {
-  display: inline-block;
-  height: 100%;
-  margin: 0px auto;
-  overflow: auto;
-  padding: 0px;
-  text-align: center;
-  width: 100%;
-}
-.home-section .calContainer .calSubcontainer {
-  display: inline-block;
-  margin: 5px auto;
-  padding: 10px;
-}
-.home-section .calContainer .calSubcontainer #calBox {
-  margin: 0px;
-  padding: 10px;
-  width: 100%;
-}
-.home-section .calTable {
-  background-color: #414042;
-  border: 1px dotted #db124b;
-  color: #231f20;
-  display: inline-block;
-  font-size: 8pt;
-  margin: 5px auto;
-  opacity: 1;
-  overflow: hidden;
-  padding: 0px;
-}
-.home-section .calTable .monHdr {
-  font-size: 12pt;
-  margin: 0px auto;
-  text-align: center;
-}
-.home-section .calTable .wkdayHdr {
-  font-size: 10pt;
-  margin: 10px 20px;
-  padding: 2px;
-  text-align: center;
-}
-.home-section .calTable .calDayRow {
-  font-size: 8pt;
-  text-align: center;
-  width: 30px;
-}
-.home-section .calTable .hiLite {
-  background-color: #db124b;
-  border-radius: 40%;
-  color: #414042;
-}
-.home-section #learnMore {
-  margin: 0px auto;
-  text-align: center;
-}
-.about-section {
-  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
-  background: linear-gradient(#6d6e71, #231f20, transparent);
-}
-.about-section .about-text {
-  color: #414042;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.about-section .section-subheading {
-  color: #ebe6da;
-}
-.website-section {
-  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
-  background: linear-gradient(#6d6e71, #231f20, transparent);
-}
-.website-section .about-text {
-  color: #414042;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.website-section .section-subheading {
-  color: #007fa1;
-}
-.website-section img {
-  height: 60px;
-  width: auto;
-}
-.account-section {
-  background-color: white;
-  color: #79bcb7;
-}
-.account-section button,
-.account-section .btn,
-.account-section .btn-primary {
-  background-color: #79bcb7;
-  color: #414042;
 }
 /*****************************************************************************
  ** END OF FILE - sections.less

@@ -31,7 +31,7 @@ Main Page
                     Live Chat
                     Forums
                         Volunteers shares storied of challenges and resolutions to help other volunteers in similar situations.
-    Homeless Resources
+    Client Resources
         Emergency contact information
             Hospitals
             Urgent Care
@@ -111,30 +111,40 @@ Main Page
                             data-ng-class="{active:isActive('/')}"></a>
                     </li>
 
-                    <!-- Homeless Resources -->
-                    <li role="presentation" ng-class="{active: $state.includes('links')}">
+                    <!-- Client Resources -->
+                    <li role="presentation" ng-class="{active: $state.includes('client')}">
                         <a class="menu-item"
-                            ui-sref="homeless">
+                            ui-sref="client">
                             <span class="glyphicon glyphicon-link"></span>
-                            <span class="menu-text">&nbsp;Homeless</span>
+                            <span class="menu-text">&nbsp;Client</span>
                         </a>
-                    </li> <!-- End of Links -->
+                    </li> <!-- End of Client Resources -->
 
                     <!-- Facility Resources -->
-                    <li role="presentation" ng-class="{active: $state.includes('links')}">
+                    <li role="presentation" ng-class="{active: $state.includes('facility')}">
                         <a class="menu-item"
                             ui-sref="facility">
                             <span class="glyphicon glyphicon-link"></span>
                             <span class="menu-text">&nbsp;Facilities</span>
                         </a>
-                    </li> <!-- End of Links -->
+                    </li> <!-- End of Facility Resources -->
+
+                    <!-- Volunteer Resources -->
+                    <li role="presentation" ng-class="{active: $state.includes('volunteer')}">
+                        <a class="menu-item"
+                            ui-sref="volunteer">
+                            <span class="glyphicon glyphicon-link"></span>
+                            <span class="menu-text">&nbsp;Volunteers</span>
+                        </a>
+                    </li> <!-- End of Volunteer Resources -->
+
 
 
                     <!-- Cascading Menu -->
                     <li ui-sref-active="active" 
                         role="presentation" 
                         class="dropdown" 
-                        ng-class="{active: $state.includes('about*')}">
+                        ng-class="{active: $state.includes('sample*')}">
 
                         <a class="dropdown-toggle menu-item"
                             role="button"
@@ -142,7 +152,7 @@ Main Page
                             aria-expanded="true"
                             aria-haspopup="true"
                             >
-                            <!-- data-ng-class="{active:isActive('/about')}" -->
+                            <!-- data-ng-class="{active:isActive('/sample')}" -->
                             <span class="glyphicon glyphicon-info-sign"></span>
                             <span class="menu-text">&nbsp;Cascade</span>
                             <span class="caret"></span>
@@ -151,20 +161,20 @@ Main Page
                         <ul class="dropdown-menu" role="menu">
                             <li ui-sref-active="active">
                                 <a class="submenu-item"
-                                   ui-sref="submenu1"
+                                   ui-sref="sample"
                                    ui-sref-active="active"
-                                   data-ng-class="{active:isActive('submenu1')}">
+                                   data-ng-class="{active:isActive('sample')}">
                                     <span class="glyphicon glyphicon-info-sign"></span>
-                                    <span class="menu-text">&nbsp;Submenu1</span>
+                                    <span class="menu-text">&nbsp;Sample1</span>
                                 </a>
                             </li>
                             <li ui-sref-active="active">
                                 <a class="submenu-item"
-                                   ui-sref="submenu2"
+                                   ui-sref="sample2"
                                    ui-sref-active="active"
-                                   data-ng-class="{active:isActive('submenu2')}">
+                                   data-ng-class="{active:isActive('sample2')}">
                                     <span class="glyphicon glyphicon-folder-open"></span>
-                                    <span class="menu-text">&nbsp;Submenu2</span>
+                                    <span class="menu-text">&nbsp;Sample2</span>
                                 </a>
                             </li>
                         </ul>
@@ -173,7 +183,7 @@ Main Page
 
                     <!-- TODO: implement login function by removing the hidden class and creating supporting logic -->
                     <!-- Login/Logoff options -->
-                    <li role="presentation" class="dropdown hidden" >
+                    <li role="presentation" class="dropdown" >
                         <a class="dropdown-toggle menu-item" ng-class="{active: $state.includes('login')}" 
                             data-toggle="dropdown">
 

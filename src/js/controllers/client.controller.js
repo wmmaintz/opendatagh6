@@ -1,7 +1,7 @@
 /*!***************************************************************************
  *****************************************************************************
  **
- ** Filename    : sample.controller.js
+ ** Filename    : client.controller.js
  **
  *****************************************************************************
  ****************************************************************************/
@@ -9,32 +9,43 @@
 (function () {
     'use strict';
 
-    // sampleController Function
-    var sampleController = function($scope, sampleService){
+    // clientController Function
+    var clientController = function($scope, clientService){
 
         if(debug){
-            console.log('sampleController activated');
+            console.log('clientController activated');
         }    
 
         var vm = $scope;
 
         //////////////////////////////////////////////////////////////////////
-        // sample collection
+        // clients collection
         //////////////////////////////////////////////////////////////////////
         vm.init = function(){
-            vm.samples = [];
-            vm.sampleCats = [];
-            vm.sortOrder = 'id';
-            vm.samples = vm.getAllV();
+            vm.clients = [];
+            vm.clientCats = [];
+            vm.clientSelected = false;
+            vm.clients = vm.getAllV();
         };
 
-        // GET All samples
+        // Select a specific client from the list
+        vm.selectClient = function(id){
+            alert("ID = " + id);
+            for(var i=0;i<clients.length;i++){
+                if( clients[i].clientId = id){
+                    return clients[i];
+                }
+            }
+            return null;
+        }
+
+        // GET All clients
         vm.getAllV = function(){
-            sampleService.srvcGetAllSamples()
+            clientService.srvcGetAllclients()
             .then(function(response){
                 // success
-                vm.samples = response;
-                console.log('Number of samples returned = [' + vm.samples.length + ']');
+                vm.clients = response;
+                console.log('Number of clients returned = [' + vm.clients.length + ']');
             }, function(err){
                 // error
                 console.log('ERROR:' + err);
@@ -42,21 +53,21 @@
                 // message
             })
             .then(function(response){
-                vm.sampleCats = _.uniq(_.pluck(vm.samples, 'category'));
-                //vm.sampleCats = sampleService.getSampleCats();
+                vm.clientCats = _.uniq(_.pluck(vm.clients, 'category'));
+                //vm.clientCats = clientService.getclientCats();
             });
-            if(debug && (vm.samples.length != 0) ){
-                console.log('sampleController samples(' + vm.samples.length + ')');
+            if(debug && (vm.clients.length != 0) ){
+                console.log('clientController clients(' + vm.clients.length + ')');
             }
         };
 
         vm.init();
 
-        vm.addSample = function(){
+        vm.addclient = function(){
             
             var modalInstance = $modal.open({
-                templateUrl: '/partials/sample/addsample.html',
-                controller: 'sampleController'
+                templateUrl: '/partials/client/addclient.html',
+                controller: 'clientController'
             });
 
             modalInstance.result.then(function(){
@@ -71,10 +82,10 @@
             vm.modifyData = false;
         };
 
-        vm.editSample = function(sample){
+        vm.editclient = function(client){
             vm.modifyData = true;
             if(confirm('Do you want to save the changes?')){
-                sampleService.srvcEditSample(sample)
+                clientService.srvcEditclient(client)
                 .then(function(response){
                     // success
                     vm.getAllV();
@@ -88,13 +99,13 @@
             vm.modifyData = false;
         };
 
-        vm.delSample = function(id){
+        vm.delclient = function(id){
             vm.modifyData = true;
-            if(confirm('Are you sure you want to DELETE this samples?')){
-                if(sampleService.srvcDelSample(id) == null){
-                    console.log('sample Id [' + id + '] has been deleted!');
+            if(confirm('Are you sure you want to DELETE this client?')){
+                if(clientService.srvcDelclient(id) == null){
+                    console.log('client Id [' + id + '] has been deleted!');
                 } else {
-                    console.log('ERROR: sample Id [' + id + '] has NOT been deleted!');
+                    console.log('ERROR: client Id [' + id + '] has NOT been deleted!');
                 }
             }
             vm.modifyData = false;
@@ -121,28 +132,28 @@
 
         vm.rowColor = ['cyan', 'cream'];
 
-        // console.log(' samples = ', vm.samples);
-        // console.log('#samples = ', vm.samples.length);
-        // console.log(' sampleCats = ', vm.sampleCats);
+        // console.log(' clients = ', vm.clients);
+        // console.log('#clients = ', vm.clients.length);
+        // console.log(' clientCats = ', vm.clientCats);
         // console.log('\nui-grid.Options = ', vm.gridOptions);
 
         return vm;
     };
 
-    // sampleController Definiton
+    // clientController Definiton
     angular
         .module('app')
-        .controller('sampleController', [
+        .controller('clientController', [
             '$scope', 
-            'sampleService',
-            sampleController]);
+            'clientService',
+            clientController]);
 
     if(debug){
-        console.log('sampleController defined');
+        console.log('clientController defined');
     }
 
 }());
 
 /*****************************************************************************
- ** END OF FILE - sample.controller.js
+ ** END OF FILE - client.controller.js
  ****************************************************************************/

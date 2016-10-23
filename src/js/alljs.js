@@ -26,7 +26,6 @@ var debug = true;
                 'ui.bootstrap',
                 'ui.bootstrap.carousel',
                 'ui.bootstrap.progressbar',
-                'ui.calendar',
                 'ui.grid',
                 'ui.grid.edit',
                 'ui.grid.cellNav',
@@ -96,26 +95,32 @@ var debug = true;
                     url: '/facility'
                 })
 
-                /* homeless */
-                .state('homeless', {
-                    controller: 'homelessController',
-                    templateUrl: 'partials/homeless/homeless.html',
-                    url: '/homeless'
+                /* client */
+                .state('client', {
+                    controller: 'clientController',
+                    templateUrl: 'partials/client/client.html',
+                    url: '/client'
                 })
 
                 /* volunteers */
                 .state('volunteer', {
                     controller: 'volunteerController',
-                    templateUrl: 'partials/volunteer/volunteer.carousel.html',
+                    templateUrl: 'partials/volunteer/volunteer.html',
                     url: '/volunteer'
                 })
 
+                /* sample */
+                .state('sample', {
+                    controller: 'sampleController',
+                    templateUrl: 'partials/sample/sample.html',
+                    url: '/sample'
+                })
 
-                /* Register */
-                .state('register', {
-                    controller: 'userController',
-                    templateUrl: 'partials/account/register.html',
-                    url: '/register'
+                /* sample */
+                .state('sample2', {
+                    controller: 'sampleController',
+                    templateUrl: 'partials/sample/sample2.html',
+                    url: '/sample2'
                 })
 
                 /* Login */
@@ -138,7 +143,7 @@ var debug = true;
                     */
                     .when('/facility/:facilityName', '/partials/facility/:id')
                     .when('/volunteer/:volunteerName', '/partials/volunteer/:id')
-                    .when('/homeless/:homelessName', '/partials/homeless/:id')
+                    .when('/client/:clientName', '/partials/client/:id')
                     /*
                     ** If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
                     */
@@ -187,7 +192,7 @@ angular
                     $rootScope.debug = debug;
                     $rootScope.endPoint = 'http://localhost:3000';
                 } else {
-                    $rootScope.endPoint = 'http://maintz.com';
+                    $rootScope.endPoint = 'http://resex.org';
                 }    
             }
         ]);
@@ -566,356 +571,7 @@ angular
 /*!***************************************************************************
  *****************************************************************************
  **
- ** Filename    : ui.calendar.controller.js
- **
- *****************************************************************************
- ****************************************************************************/
-
-/*
-*  AngularJs Fullcalendar Wrapper for the JQuery FullCalendar
-*  API @ http://arshaw.com/fullcalendar/
-*
-*  Angular Calendar Directive that takes in the [eventSources] nested array object as the ng-model and watches it deeply changes.
-*       Can also take in multiple event urls as a source object(s) and feed the events per view.
-*       The calendar will watch any eventSource array and update itself when a change is made.
-*
-*/
-
-(function () {
-    'use strict';
-
-    var uiCalendar = angular.module('ui.calendar', []);
-    if(debug){
-        console.log('ui.calendar defined');
-    }
-
-    uiCalendar.constant('uiCalendarConfig', {calendars: {}});
-    if(debug){
-        console.log('uiCalendarConfig defined');
-    }
-
-    uiCalendar.controller('uiCalendarController', [
-                    '$timeout', '$locale', 
-            function($timeout,   $locale){
-
-        var vm = this;
-            
-        if(debug){
-            console.log('uiCalendarController activated');
-        }  
-
-        var sources = vm.eventSources,
-            extraEventSignature = vm.calendarWatchEvent ? vm.calendarWatchEvent : angular.noop,
-            wrapFunctionWithScopeApply = function(functionToWrap){
-                var wrapper;
-                if (functionToWrap){
-                    wrapper = function(){
-                        // This happens outside of angular context so we need to wrap it in a timeout which has an implied apply.
-                        // In this way the function will be safely executed on the next digest.
-                        var args = arguments;
-                        var _this = this;
-                        $timeout(function(){
-                            functionToWrap.apply(_this, args);
-                        });
-                    };
-                }
-                return wrapper;
-            };
-            
-        var eventSerialId = 1;
-        // @return {String} fingerprint of the event object and its properties
-        this.eventFingerprint = function(e) {
-            if (!e._id) {
-                e._id = eventSerialId++;
-            }
-            // This extracts all the information we need from the event. http://jsperf.com/angular-calendar-events-fingerprint/3
-            return '' + e._id + (e.id || '') + (e.title || '') + (e.url || '') + (+e.start || '') + (+e.end || '') +
-                (e.allDay || '') + (e.className || '') + extraEventSignature(e) || '';
-        };
-
-        var sourceSerialId = 1, sourceEventsSerialId = 1;
-        // @return {String} fingerprint of the source object and its events array
-        this.sourceFingerprint = function(source) {
-            var fp = '' + (source.__id || (source.__id = sourceSerialId++)),
-                events = angular.isObject(source) && source.events;
-            if (events) {
-                fp = fp + '-' + (events.__id || (events.__id = sourceEventsSerialId++));
-            }
-            return fp;
-        };
-
-        // @return {Array} all events from all sources
-        this.allEvents = function() {
-            // do sources.map(&:events).flatten(), but we don't have flatten
-            var arraySources = [];
-            for (var i = 0, srcLen = sources.length; i < srcLen; i++) {
-                var source = sources[i];
-                if (angular.isArray(source)) {
-                    // event source as array
-                    arraySources.push(source);
-                } else if(angular.isObject(source) && angular.isArray(source.events)){
-                    // event source as object, ie extended form
-                    var extEvent = {};
-                    for(var key in source){
-                        if(key !== '_id' && key !== 'events'){
-                            extEvent[key] = source[key];
-                        }
-                    }
-                    for(var eI = 0;eI < source.events.length;eI++){
-                        angular.extend(source.events[eI],extEvent);
-                        }
-                    arraySources.push(source.events);
-                }
-            }
-            return Array.prototype.concat.apply([], arraySources);
-        };
-
-        // Track changes in array of objects by assigning id tokens to each element and watching the scope for changes in the tokens
-        // @param {Array|Function} arraySource array of objects to watch
-        // @param tokenFn {Function} that returns the token for a given object
-        // @return {Object}
-        //  subscribe: function(scope, function(newTokens, oldTokens))
-        //    called when source has changed. return false to prevent individual callbacks from firing
-        //  onAdded/Removed/Changed:
-        //    when set to a callback, called each item where a respective change is detected
-        this.changeWatcher = function(arraySource, tokenFn) {
-            var self;
-            var getTokens = function() {
-                var array = angular.isFunction(arraySource) ? arraySource() : arraySource;
-                var result = [], token, el;
-                for (var i = 0, n = array.length; i < n; i++) {
-                    el = array[i];
-                    token = tokenFn(el);
-                    map[token] = el;
-                    result.push(token);
-                }
-                return result;
-            };
-
-            // @param {Array} a
-            // @param {Array} b
-            // @return {Array} elements in that are in a but not in b
-            // @example
-            //  subtractAsSets([6, 100, 4, 5], [4, 5, 7]) // [6, 100]
-            var subtractAsSets = function(a, b) {
-                var result = [], inB = {}, i, n;
-                for (i = 0, n = b.length; i < n; i++) {
-                    inB[b[i]] = true;
-                }
-                for (i = 0, n = a.length; i < n; i++) {
-                    if (!inB[a[i]]) {
-                        result.push(a[i]);
-                    }
-                }
-                return result;
-            };
-
-            // Map objects to tokens and vice-versa
-            var map = {};
-
-            // Compare newTokens to oldTokens and call onAdded, onRemoved, and onChanged handlers for each affected event respectively.
-            var applyChanges = function(newTokens, oldTokens) {
-                var i, n, el, token;
-                var replacedTokens = {};
-                var removedTokens = subtractAsSets(oldTokens, newTokens);
-                for (i = 0, n = removedTokens.length; i < n; i++) {
-                    var removedToken = removedTokens[i];
-                    el = map[removedToken];
-                    delete map[removedToken];
-                    var newToken = tokenFn(el);
-                    // if the element wasn't removed but simply got a new token, its old token will be different from the current one
-                    if (newToken === removedToken) {
-                        self.onRemoved(el);
-                    } else {
-                        replacedTokens[newToken] = removedToken;
-                        self.onChanged(el);
-                    }
-                }
-
-                var addedTokens = subtractAsSets(newTokens, oldTokens);
-                for (i = 0, n = addedTokens.length; i < n; i++) {
-                    token = addedTokens[i];
-                    el = map[token];
-                    if (!replacedTokens[token]) {
-                        self.onAdded(el);
-                    }
-                }
-            };
-            self = {
-                subscribe: function(scope, onArrayChanged) {
-                    scope.$watch(getTokens, function(newTokens, oldTokens) {
-                        var notify = !(onArrayChanged && onArrayChanged(newTokens, oldTokens) === false);
-                        if (notify) {
-                            applyChanges(newTokens, oldTokens);
-                        }
-                    }, true);
-                },
-                onAdded: angular.noop,
-                onChanged: angular.noop,
-                onRemoved: angular.noop
-            };
-            return self;
-        };
-
-        this.getFullCalendarConfig = function(calendarSettings, uiCalendarConfig){
-            var config = {};
-
-            angular.extend(config, uiCalendarConfig);
-            angular.extend(config, calendarSettings);
-
-            angular.forEach(config, function(value,key){
-                if (typeof value === 'function'){
-                    config[key] = wrapFunctionWithScopeApply(config[key]);
-                }
-            });
-
-            return config;
-        };
-
-        this.getLocaleConfig = function(fullCalendarConfig) {
-            if (!fullCalendarConfig.lang || fullCalendarConfig.useNgLocale) {
-                // Configure to use locale names by default
-                var tValues = function(data) {
-                    // convert {0: 'Jan', 1: 'Feb', ...} to ['Jan', 'Feb', ...]
-                    var r, k;
-                    r = [];
-                    for (k in data) {
-                        r[k] = data[k];
-                    }
-                    return r;
-                };
-                var dtf = $locale.DATETIME_FORMATS;
-                return {
-                    monthNames: tValues(dtf.MONTH),
-                    monthNamesShort: tValues(dtf.SHORTMONTH),
-                    dayNames: tValues(dtf.DAY),
-                    dayNamesShort: tValues(dtf.SHORTDAY)
-                };
-            }
-            return {};
-        };
-    }]);
-
-    if(debug){
-        console.log('uiCalendarController defined');
-    }
-
-    uiCalendar.directive('uiCalendar', ['uiCalendarConfig', function(uiCalendarConfig) {
-        return {
-            restrict: 'A',
-            scope: {eventSources:'=ngModel',calendarWatchEvent: '&'},
-            controller: 'uiCalendarController',
-            link: function(scope, elm, attrs, controller) {
-
-                var sources = scope.eventSources,
-                    sourcesChanged = false,
-                    calendar,
-                    eventSourcesWatcher = controller.changeWatcher(sources, controller.sourceFingerprint),
-                    eventsWatcher = controller.changeWatcher(controller.allEvents, controller.eventFingerprint),
-                    options = null;
-
-                function getOptions(){
-                    var calendarSettings = attrs.uiCalendar ? scope.$parent.$eval(attrs.uiCalendar) : {},
-                        fullCalendarConfig;
-
-                    fullCalendarConfig = controller.getFullCalendarConfig(calendarSettings, uiCalendarConfig);
-
-                    var localeFullCalendarConfig = controller.getLocaleConfig(fullCalendarConfig);
-                    angular.extend(localeFullCalendarConfig, fullCalendarConfig);
-                    options = { eventSources: sources };
-                    angular.extend(options, localeFullCalendarConfig);
-                    //remove calendars from options
-                    options.calendars = null;
-
-                    var options2 = {};
-                    for(var o in options){
-                        if(o !== 'eventSources'){
-                            options2[o] = options[o];
-                        }
-                    }
-                    return JSON.stringify(options2);
-                }
-
-                    scope.destroy = function(){
-                        if(calendar && calendar.fullCalendar){
-                            calendar.fullCalendar('destroy');
-                        }
-                        if(attrs.calendar) {
-                            calendar = uiCalendarConfig.calendars[attrs.calendar] = $(elm).html('');
-                        } else {
-                            calendar = $(elm).html('');
-                        }
-                    };
-
-                scope.init = function(){
-                    calendar.fullCalendar(options);
-                    if(attrs.calendar) {
-                        uiCalendarConfig.calendars[attrs.calendar] = calendar;
-                    }          
-                };
-
-                eventSourcesWatcher.onAdded = function(source) {
-                    calendar.fullCalendar('addEventSource', source);
-                    sourcesChanged = true;
-                };
-
-                eventSourcesWatcher.onRemoved = function(source) {
-                    calendar.fullCalendar('removeEventSource', source);
-                    sourcesChanged = true;
-                };
-
-                eventSourcesWatcher.onChanged = function(source) {
-                    console.log(source + ' changed');
-                    calendar.fullCalendar('refetchEvents');
-                    sourcesChanged = true;
-                };
-
-                eventsWatcher.onAdded = function(event) {
-                    calendar.fullCalendar('renderEvent', event, (event.stick ? true : false));
-                };
-
-                eventsWatcher.onRemoved = function(event) {
-                    calendar.fullCalendar('removeEvents', event._id);
-                };
-
-                eventsWatcher.onChanged = function(event) {
-                    event._start = jQuery.fullCalendar.moment(event.start);
-                    event._end = jQuery.fullCalendar.moment(event.end);
-                    calendar.fullCalendar('updateEvent', event);
-                };
-
-                eventSourcesWatcher.subscribe(scope);
-                eventsWatcher.subscribe(scope, function() {
-                    if (sourcesChanged === true) {
-                        sourcesChanged = false;
-                        // return false to prevent onAdded/Removed/Changed handlers from firing in this case
-                        return false;
-                    }
-                });
-
-                scope.$watch(getOptions, function(newO,oldO){
-                    console.log(newO,oldO);
-                    scope.destroy();
-                    scope.init();
-                });
-            }
-        };
-    }]);
-
-    if(debug){
-        console.log('uiCalendar defined');
-    }
-
-}());
-
-/*****************************************************************************
- ** END OF FILE - ui.calendar.controller.js
- ****************************************************************************/
-
-/*!***************************************************************************
- *****************************************************************************
- **
- ** Filename    : samples.controller.js
+ ** Filename    : client.controller.js
  **
  *****************************************************************************
  ****************************************************************************/
@@ -923,32 +579,32 @@ angular
 (function () {
     'use strict';
 
-    // samplesController Function
-    var samplesController = function($scope, $modal, samplesService){
+    // clientController Function
+    var clientController = function($scope, clientService){
 
         if(debug){
-            console.log('samplesController activated');
+            console.log('clientController activated');
         }    
 
         var vm = $scope;
 
         //////////////////////////////////////////////////////////////////////
-        // sampless collection
+        // clients collection
         //////////////////////////////////////////////////////////////////////
         vm.init = function(){
-            vm.samples = [];
-            vm.samplesCats = [];
+            vm.clients = [];
+            vm.clientCats = [];
             vm.sortOrder = 'id';
-            vm.samples = vm.getAllV();
+            vm.clients = vm.getAllV();
         };
 
-        // GET All samples
+        // GET All clients
         vm.getAllV = function(){
-            samplesService.srvcGetAllsamples()
+            clientService.srvcGetAllclients()
             .then(function(response){
                 // success
-                vm.samples = response;
-                console.log('Number of samples returned = [' + vm.samples.length + ']');
+                vm.clients = response;
+                console.log('Number of clients returned = [' + vm.clients.length + ']');
             }, function(err){
                 // error
                 console.log('ERROR:' + err);
@@ -956,21 +612,21 @@ angular
                 // message
             })
             .then(function(response){
-                vm.samplesCats = _.uniq(_.pluck(vm.samples, 'category'));
-                //vm.samplesCats = samplesService.getsamplesCats();
+                vm.clientCats = _.uniq(_.pluck(vm.clients, 'category'));
+                //vm.clientCats = clientService.getclientCats();
             });
-            if(debug && (vm.samples.length != 0) ){
-                console.log('samplesController samples(' + vm.samples.length + ')');
+            if(debug && (vm.clients.length != 0) ){
+                console.log('clientController clients(' + vm.clients.length + ')');
             }
         };
 
         vm.init();
 
-        vm.addsamples = function(){
+        vm.addclient = function(){
             
             var modalInstance = $modal.open({
-                templateUrl: '/partials/samples/addsamples.html',
-                controller: 'samplesController'
+                templateUrl: '/partials/client/addclient.html',
+                controller: 'clientController'
             });
 
             modalInstance.result.then(function(){
@@ -985,10 +641,10 @@ angular
             vm.modifyData = false;
         };
 
-        vm.editsamples = function(samples){
+        vm.editclient = function(client){
             vm.modifyData = true;
             if(confirm('Do you want to save the changes?')){
-                samplesService.srvcEditsamples(samples)
+                clientService.srvcEditclient(client)
                 .then(function(response){
                     // success
                     vm.getAllV();
@@ -1002,13 +658,460 @@ angular
             vm.modifyData = false;
         };
 
-        vm.delsamples = function(id){
+        vm.delclient = function(id){
+            vm.modifyData = true;
+            if(confirm('Are you sure you want to DELETE this client?')){
+                if(clientService.srvcDelclient(id) == null){
+                    console.log('client Id [' + id + '] has been deleted!');
+                } else {
+                    console.log('ERROR: client Id [' + id + '] has NOT been deleted!');
+                }
+            }
+            vm.modifyData = false;
+        };
+
+        vm.modifyData = false;
+
+        //////////////////////////////////////////////////////////////////////
+        // ui-grid options
+        //////////////////////////////////////////////////////////////////////
+
+        vm.gridOptions = {
+            enableColumnResizing: true,
+            enableSorting: true,
+            rowHeight:100,
+            columnDefs: [
+                {field: 'img', cellTemplate:'<img width=\'120px\' ng-src=\'{{grid.getCellValue(row, col)}}\' lazy-src>' },
+                {field: 'name', displayName: 'Name'},
+                {field: 'category', displayName: 'Category'},
+                {name: 'edit', displayName: 'Edit', 
+                    cellTemplate: '<button id="editBtn" type="button" class="btn-small" ng-click="edit(row.entity)" >Edit</button> '}
+           ]    
+        };
+
+        vm.rowColor = ['cyan', 'cream'];
+
+        // console.log(' clients = ', vm.clients);
+        // console.log('#clients = ', vm.clients.length);
+        // console.log(' clientCats = ', vm.clientCats);
+        // console.log('\nui-grid.Options = ', vm.gridOptions);
+
+        return vm;
+    };
+
+    // clientController Definiton
+    angular
+        .module('app')
+        .controller('clientController', [
+            '$scope', 
+            'clientService',
+            clientController]);
+
+    if(debug){
+        console.log('clientController defined');
+    }
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - client.controller.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : volunteer.controller.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+
+    // volunteerController Function
+    var volunteerController = function($scope, volunteerService){
+
+        if(debug){
+            console.log('volunteerController activated');
+        }    
+
+        var vm = $scope;
+
+        //////////////////////////////////////////////////////////////////////
+        // volunteers collection
+        //////////////////////////////////////////////////////////////////////
+        vm.init = function(){
+            vm.volunteers = [];
+            vm.volunteerCats = [];
+            vm.sortOrder = 'id';
+            vm.volunteers = vm.getAllV();
+        };
+
+        // GET All volunteers
+        vm.getAllV = function(){
+            volunteerService.srvcGetAllVolunteers()
+            .then(function(response){
+                // success
+                vm.volunteers = response;
+                console.log('Number of volunteers returned = [' + vm.volunteers.length + ']');
+            }, function(err){
+                // error
+                console.log('ERROR:' + err);
+            }, function(msg){
+                // message
+            })
+            .then(function(response){
+                vm.volunteerCats = _.uniq(_.pluck(vm.volunteers, 'category'));
+                //vm.volunteerCats = volunteerService.getvolunteerCats();
+            });
+            if(debug && (vm.volunteers.length != 0) ){
+                console.log('volunteerController volunteers(' + vm.volunteers.length + ')');
+            }
+        };
+
+        vm.init();
+
+        vm.addvolunteer = function(){
+            
+            var modalInstance = $modal.open({
+                templateUrl: '/partials/volunteer/addvolunteer.html',
+                controller: 'volunteerController'
+            });
+
+            modalInstance.result.then(function(){
+                // success
+                vm.getAllV();
+            }, function(err){
+                // error
+                vm.getAllV();
+            }, function(msg){
+                // message
+            });
+            vm.modifyData = false;
+        };
+
+        vm.editVolunteer = function(volunteer){
+            vm.modifyData = true;
+            if(confirm('Do you want to save the changes?')){
+                volunteerService.srvcEditvolunteer(volunteer)
+                .then(function(response){
+                    // success
+                    vm.getAllV();
+                }, function(err){
+                    // error
+                    console.log('ERROR:' + err);
+                }, function(msg){
+                    // message
+                });
+            }
+            vm.modifyData = false;
+        };
+
+        vm.delVolunteer = function(id){
+            vm.modifyData = true;
+            if(confirm('Are you sure you want to DELETE this volunteer?')){
+                if(volunteerService.srvcDelvolunteer(id) == null){
+                    console.log('volunteer Id [' + id + '] has been deleted!');
+                } else {
+                    console.log('ERROR: volunteer Id [' + id + '] has NOT been deleted!');
+                }
+            }
+            vm.modifyData = false;
+        };
+
+        vm.modifyData = false;
+
+        //////////////////////////////////////////////////////////////////////
+        // ui-grid options
+        //////////////////////////////////////////////////////////////////////
+
+        vm.gridOptions = {
+            enableColumnResizing: true,
+            enableSorting: true,
+            rowHeight:100,
+            columnDefs: [
+                {field: 'img', cellTemplate:'<img width=\'120px\' ng-src=\'{{grid.getCellValue(row, col)}}\' lazy-src>' },
+                {field: 'name', displayName: 'Name'},
+                {field: 'category', displayName: 'Category'},
+                {name: 'edit', displayName: 'Edit', 
+                    cellTemplate: '<button id="editBtn" type="button" class="btn-small" ng-click="edit(row.entity)" >Edit</button> '}
+           ]    
+        };
+
+        vm.rowColor = ['cyan', 'cream'];
+
+        // console.log(' volunteers = ', vm.volunteers);
+        // console.log('#volunteers = ', vm.volunteers.length);
+        // console.log(' volunteerCats = ', vm.volunteerCats);
+        // console.log('\nui-grid.Options = ', vm.gridOptions);
+
+        return vm;
+    };
+
+    // volunteerController Definiton
+    angular
+        .module('app')
+        .controller('volunteerController', [
+            '$scope', 
+            'volunteerService',
+            volunteerController]);
+
+    if(debug){
+        console.log('volunteerController defined');
+    }
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - volunteer.controller.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : facility.controller.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+
+    // facilityController Function
+    var facilityController = function($scope, facilityService){
+
+        if(debug){
+            console.log('facilityController activated');
+        }    
+
+        var vm = $scope;
+
+        //////////////////////////////////////////////////////////////////////
+        // facilities collection
+        //////////////////////////////////////////////////////////////////////
+        vm.init = function(){
+            vm.facilities = [];
+            vm.facilityCats = [];
+            vm.sortOrder = 'id';
+            vm.facilities = vm.getAllV();
+        };
+
+        // GET All facilities
+        vm.getAllV = function(){
+            facilityService.srvcGetAllFacilities()
+            .then(function(response){
+                // success
+                vm.facilities = response;
+                console.log('Number of facilities returned = [' + vm.facilities.length + ']');
+            }, function(err){
+                // error
+                console.log('ERROR:' + err);
+            }, function(msg){
+                // message
+            })
+            .then(function(response){
+                vm.facilityCats = _.uniq(_.pluck(vm.facilities, 'category'));
+                //vm.facilityCats = facilityService.getfacilityCats();
+            });
+            if(debug && (vm.facilities.length != 0) ){
+                console.log('facilityController facilities(' + vm.facilities.length + ')');
+            }
+        };
+
+        vm.init();
+
+        vm.addFacility = function(){
+            
+            var modalInstance = $modal.open({
+                templateUrl: '/partials/facility/addfacility.html',
+                controller: 'facilityController'
+            });
+
+            modalInstance.result.then(function(){
+                // success
+                vm.getAllV();
+            }, function(err){
+                // error
+                vm.getAllV();
+            }, function(msg){
+                // message
+            });
+            vm.modifyData = false;
+        };
+
+        vm.editFacility = function(facility){
+            vm.modifyData = true;
+            if(confirm('Do you want to save the changes?')){
+                facilityService.srvcEditFacility(facility)
+                .then(function(response){
+                    // success
+                    vm.getAllV();
+                }, function(err){
+                    // error
+                    console.log('ERROR:' + err);
+                }, function(msg){
+                    // message
+                });
+            }
+            vm.modifyData = false;
+        };
+
+        vm.delFacility = function(id){
+            vm.modifyData = true;
+            if(confirm('Are you sure you want to DELETE this facility?')){
+                if(facilityService.srvcDelFacility(id) == null){
+                    console.log('facility Id [' + id + '] has been deleted!');
+                } else {
+                    console.log('ERROR: facility Id [' + id + '] has NOT been deleted!');
+                }
+            }
+            vm.modifyData = false;
+        };
+
+        vm.modifyData = false;
+
+        //////////////////////////////////////////////////////////////////////
+        // ui-grid options
+        //////////////////////////////////////////////////////////////////////
+
+        vm.gridOptions = {
+            enableColumnResizing: true,
+            enableSorting: true,
+            rowHeight:100,
+            columnDefs: [
+                {field: 'img', cellTemplate:'<img width=\'120px\' ng-src=\'{{grid.getCellValue(row, col)}}\' lazy-src>' },
+                {field: 'name', displayName: 'Name'},
+                {field: 'category', displayName: 'Category'},
+                {name: 'edit', displayName: 'Edit', 
+                    cellTemplate: '<button id="editBtn" type="button" class="btn-small" ng-click="edit(row.entity)" >Edit</button> '}
+           ]    
+        };
+
+        vm.rowColor = ['cyan', 'cream'];
+
+        // console.log(' facilities = ', vm.facilities);
+        // console.log('#facilities = ', vm.facilities.length);
+        // console.log(' facilityCats = ', vm.facilityCats);
+        // console.log('\nui-grid.Options = ', vm.gridOptions);
+
+        return vm;
+    };
+
+    // facilityController Definiton
+    angular
+        .module('app')
+        .controller('facilityController', [
+            '$scope', 
+            'facilityService',
+            facilityController]);
+
+    if(debug){
+        console.log('facilityController defined');
+    }
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - facility.controller.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : sample.controller.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+
+    // sampleController Function
+    var sampleController = function($scope, sampleService){
+
+        if(debug){
+            console.log('sampleController activated');
+        }    
+
+        var vm = $scope;
+
+        //////////////////////////////////////////////////////////////////////
+        // sample collection
+        //////////////////////////////////////////////////////////////////////
+        vm.init = function(){
+            vm.samples = [];
+            vm.sampleCats = [];
+            vm.sortOrder = 'id';
+            vm.samples = vm.getAllV();
+        };
+
+        // GET All samples
+        vm.getAllV = function(){
+            sampleService.srvcGetAllSamples()
+            .then(function(response){
+                // success
+                vm.samples = response;
+                console.log('Number of samples returned = [' + vm.samples.length + ']');
+            }, function(err){
+                // error
+                console.log('ERROR:' + err);
+            }, function(msg){
+                // message
+            })
+            .then(function(response){
+                vm.sampleCats = _.uniq(_.pluck(vm.samples, 'category'));
+                //vm.sampleCats = sampleService.getSampleCats();
+            });
+            if(debug && (vm.samples.length != 0) ){
+                console.log('sampleController samples(' + vm.samples.length + ')');
+            }
+        };
+
+        vm.init();
+
+        vm.addSample = function(){
+            
+            var modalInstance = $modal.open({
+                templateUrl: '/partials/sample/addsample.html',
+                controller: 'sampleController'
+            });
+
+            modalInstance.result.then(function(){
+                // success
+                vm.getAllV();
+            }, function(err){
+                // error
+                vm.getAllV();
+            }, function(msg){
+                // message
+            });
+            vm.modifyData = false;
+        };
+
+        vm.editSample = function(sample){
+            vm.modifyData = true;
+            if(confirm('Do you want to save the changes?')){
+                sampleService.srvcEditSample(sample)
+                .then(function(response){
+                    // success
+                    vm.getAllV();
+                }, function(err){
+                    // error
+                    console.log('ERROR:' + err);
+                }, function(msg){
+                    // message
+                });
+            }
+            vm.modifyData = false;
+        };
+
+        vm.delSample = function(id){
             vm.modifyData = true;
             if(confirm('Are you sure you want to DELETE this samples?')){
-                if(samplesService.srvcDelsamples(id) == null){
-                    console.log('samples Id [' + id + '] has been deleted!');
+                if(sampleService.srvcDelSample(id) == null){
+                    console.log('sample Id [' + id + '] has been deleted!');
                 } else {
-                    console.log('ERROR: samples Id [' + id + '] has NOT been deleted!');
+                    console.log('ERROR: sample Id [' + id + '] has NOT been deleted!');
                 }
             }
             vm.modifyData = false;
@@ -1037,29 +1140,69 @@ angular
 
         // console.log(' samples = ', vm.samples);
         // console.log('#samples = ', vm.samples.length);
-        // console.log(' samplesCats = ', vm.samplesCats);
+        // console.log(' sampleCats = ', vm.sampleCats);
         // console.log('\nui-grid.Options = ', vm.gridOptions);
 
         return vm;
     };
 
-    // samplesController Definiton
+    // sampleController Definiton
     angular
         .module('app')
-        .controller('samplesController', [
+        .controller('sampleController', [
             '$scope', 
-            '$modal',
-            'samplesService',
-            samplesController]);
+            'sampleService',
+            sampleController]);
 
     if(debug){
-        console.log('samplesController defined');
+        console.log('sampleController defined');
     }
 
 }());
 
 /*****************************************************************************
- ** END OF FILE - samples.controller.js
+ ** END OF FILE - sample.controller.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : user.controller.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+
+    var userController = function ($scope) {
+        
+        if(debug){
+            console.log('userController activated');
+        }    
+
+        $scope.items = [
+            'user',
+            'website'
+        ];
+
+    };
+
+    angular
+        .module('app')
+        .controller('userController', [
+            '$scope', 
+            userController
+        ]);
+
+    if(debug){
+        console.log('userController defined');
+    }
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - user.controller.js
  ****************************************************************************/
 
 /*!***************************************************************************
@@ -1375,7 +1518,7 @@ angular
 /*!***************************************************************************
  *****************************************************************************
  **
- ** Filename    : samples.service.js
+ ** Filename    : client.service.js
  **
  *****************************************************************************
  ****************************************************************************/
@@ -1385,55 +1528,55 @@ angular
     var app = angular.module('app');
 
 
-    // samplesService Function
-    var samplesService = function($http, $q){
+    // clientService Function
+    var clientService = function($http, $q){
 
         var service = {
-            samples: [],
-            sampleCats: [],
-            srvcGetAllsamples: srvcGetAllsamples,
-            srvcGetsampleCats: srvcGetsampleCats,
+            clients: [],
+            clientCats: [],
+            srvcGetAllclients: srvcGetAllclients,
+            srvcGetclientCats: srvcGetclientCats,
             srvcGetSelectedIndex: srvcGetSelectedIndex,
-            srvcGetAsample: srvcGetAsample,
-            srvcAddsample: srvcAddsample,
-            srvcEditsample: srvcEditsample,
-            srvcDelsample: srvcDelsample
+            srvcGetAclient: srvcGetAclient,
+            srvcAddclient: srvcAddclient,
+            srvcEditclient: srvcEditclient,
+            srvcDelclient: srvcDelclient
         };
 
-        // GET all samples
-        function srvcGetAllsamples(){
+        // GET all clients
+        function srvcGetAllclients(){
             var deferred = $q.defer();
             // Make call to RESTFUL API
-            $http.get('json/samples.json')
+            $http.get('json/client.json')
             .success(function(data){
-                service.samples = data;
+                service.clients = data;
                 deferred.resolve(data);
             })
             .error(function(err, status){
-                deferred.reject('Failed to get samples');
+                deferred.reject('Failed to get clients');
             });
             return deferred.promise;
         }
 
-        function srvcGetsampleCats(){
-            var samples = service.samples;
-            var sampleCats =  [];
-            if( samples.length <1){
-                samples =  srvcGetAllsamples();
+        function srvcGetclientCats(){
+            var clients = service.clients;
+            var clientCats =  [];
+            if( clients.length <1){
+                clients =  srvcGetAllclients();
             }
-            if( samples.length >0){
-                sampleCats = _.uniq(_.pluck(samples, 'category'));
+            if( clients.length >0){
+                clientCats = _.uniq(_.pluck(clients, 'category'));
             }
-            service.samples = samples;
-            service.sampleCats = sampleCats;
-            return sampleCats;
+            service.clients = clients;
+            service.clientCats = clientCats;
+            return clientCats;
         }
 
         // get the selected index into the array
         function srvcGetSelectedIndex(id){
             if(id >= 0){
-                for(var i=0; i<service.samples.length; i++){
-                    if(service.samples[i].id == id){
+                for(var i=0; i<service.clients.length; i++){
+                    if(service.clients[i].id == id){
                         return i;
                     }
                 }
@@ -1441,83 +1584,383 @@ angular
             return -1;
         }
         
-        // GET a sample
-        // pass in a sample Id and get the sample record
-        function srvcGetAsample(id){
+        // GET a client
+        // pass in a client Id and get the client record
+        function srvcGetAclient(id){
             var idx = srvcGetSelectedIndex(id);
             if(idx != -1){
-                console.log('getAsample(' + id + ')(' + idx + ') = [' + service.samples[idx].name + ']');
-                return service.samples[idx];
+                console.log('getAclient(' + id + ')(' + idx + ') = [' + service.clients[idx].name + ']');
+                return service.clients[idx];
             } else {
-                deferred.reject('sample could not be found!');
+                deferred.reject('client could not be found!');
             }
             return null;
         }
 
         // ADD
-        function srvcAddsample(sample){
+        function srvcAddclient(client){
             var deferred = $q.defer();
             // Make call to RESTFUL API
-            $http.post('json/samples.json', sample)
+            $http.post('json/client.json', client)
                 .success(function(data){
-                    service.samples = data;
+                    service.clients = data;
                     deferred.resolve(data);
                 })
                 .error(function(err, status){
-                    deferred.reject('Failed to add sample');
+                    deferred.reject('Failed to add client');
                 });
             return deferred.promise;
         }
 
         // UPDATE
-        // pass in a sample record and update the fields with the values
-        function srvcEditsample(sample){
-            var idx = srvcGetSelectedIndex(sample.id);
+        // pass in a client record and update the fields with the values
+        function srvcEditclient(client){
+            var idx = srvcGetSelectedIndex(client.id);
             if(idx != -1){
-                console.log('editsample(' + id + ')(' + idx + ') changed:');
-                console.log('editsample( --- name     [' + service.samples[idx].name + '] changed to ['+ sample.name + ']');
-                console.log('editsample( --- href     [' + service.samples[idx].href + '] changed to ['+ sample.href + ']');
-                console.log('editsample( --- img      [' + service.samples[idx].img + '] changed to ['+ sample.img + ']');
-                console.log('editsample( --- category [' + service.samples[idx].category + '] changed to ['+ sample.category + ']');
-                service.samples[idx].name = sample.name ;
-                service.samples[idx].href = sample.href ;
-                service.samples[idx].img = sample.img ;
-                service.samples[idx].category = sample.category ;
+                console.log('editclient(' + id + ')(' + idx + ') changed:');
+                console.log('editclient( --- name     [' + service.clients[idx].name + '] changed to ['+ client.name + ']');
+                console.log('editclient( --- href     [' + service.clients[idx].href + '] changed to ['+ client.href + ']');
+                console.log('editclient( --- img      [' + service.clients[idx].img + '] changed to ['+ client.img + ']');
+                console.log('editclient( --- category [' + service.clients[idx].category + '] changed to ['+ client.category + ']');
+                service.clients[idx].name = client.name ;
+                service.clients[idx].href = client.href ;
+                service.clients[idx].img = client.img ;
+                service.clients[idx].category = client.category ;
             } else {
-                console.log('Invalid sample index [' + idx + ']');
+                console.log('Invalid client index [' + idx + ']');
             }
-            return service.samples[idx];
+            return service.clients[idx];
         }
 
         // DELETE
-        function srvcDelsample(id){
+        function srvcDelclient(id){
             var idx = srvcGetSelectedIndex(id);
             if(idx != -1){
-                console.log('delsample(' + id + ')(' + idx + ') deleted:');
-                console.log('delsample( --- name     [' + service.samples[idx].name     + '] deleted');
-                console.log('delsample( --- href     [' + service.samples[idx].href     + '] deleted');
-                console.log('delsample( --- img      [' + service.samples[idx].img      + '] deleted');
-                console.log('delsample( --- category [' + service.samples[idx].category + '] deleted');
-                service.samples.splice(idx,1);
+                console.log('delclient(' + id + ')(' + idx + ') deleted:');
+                console.log('delclient( --- name     [' + service.clients[idx].name     + '] deleted');
+                console.log('delclient( --- href     [' + service.clients[idx].href     + '] deleted');
+                console.log('delclient( --- img      [' + service.clients[idx].img      + '] deleted');
+                console.log('delclient( --- category [' + service.clients[idx].category + '] deleted');
+                service.clients.splice(idx,1);
 
                 return null;
             } else {
-                console.log('Invalid sample index [' + idx + ']');
+                console.log('Invalid client index [' + idx + ']');
             }
         }
         return service;
     };
 
-    // samplesService Definiton
+    // clientService Definiton
     angular
         .module('app')
-        .service('samplesService', [
+        .service('clientService', [
             '$http', 
             '$q',
-            samplesService]);
+            clientService]);
 
 }());
 
 /*****************************************************************************
- ** END OF FILE - samples.service.js
+ ** END OF FILE - client.service.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : volunteer.service.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+    var app = angular.module('app');
+
+
+    // volunteerService Function
+    var volunteerService = function($http, $q){
+
+        var service = {
+            volunteers: [],
+            volunteerCats: [],
+            srvcGetAllVolunteers: srvcGetAllVolunteers,
+            srvcGetVolunteerCats: srvcGetVolunteerCats,
+            srvcGetSelectedIndex: srvcGetSelectedIndex,
+            srvcGetAVolunteer: srvcGetAVolunteer,
+            srvcAddVolunteer: srvcAddVolunteer,
+            srvcEditVolunteer: srvcEditVolunteer,
+            srvcDelVolunteer: srvcDelVolunteer
+        };
+
+        // GET all volunteers
+        function srvcGetAllVolunteers(){
+            var deferred = $q.defer();
+            // Make call to RESTFUL API
+            $http.get('json/volunteer.json')
+            .success(function(data){
+                service.volunteers = data;
+                deferred.resolve(data);
+            })
+            .error(function(err, status){
+                deferred.reject('Failed to get volunteers');
+            });
+            return deferred.promise;
+        }
+
+        function srvcGetVolunteerCats(){
+            var volunteers = service.volunteers;
+            var volunteerCats =  [];
+            if( volunteers.length <1){
+                volunteers =  srvcGetAllvolunteers();
+            }
+            if( volunteers.length >0){
+                volunteerCats = _.uniq(_.pluck(volunteers, 'category'));
+            }
+            service.volunteers = volunteers;
+            service.volunteerCats = volunteerCats;
+            return volunteerCats;
+        }
+
+        // get the selected index into the array
+        function srvcGetSelectedIndex(id){
+            if(id >= 0){
+                for(var i=0; i<service.volunteers.length; i++){
+                    if(service.volunteers[i].id == id){
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+        
+        // GET a volunteer
+        // pass in a volunteer Id and get the volunteer record
+        function srvcGetAVolunteer(id){
+            var idx = srvcGetSelectedIndex(id);
+            if(idx != -1){
+                console.log('getAvolunteer(' + id + ')(' + idx + ') = [' + service.volunteers[idx].name + ']');
+                return service.volunteers[idx];
+            } else {
+                deferred.reject('volunteer could not be found!');
+            }
+            return null;
+        }
+
+        // ADD
+        function srvcAddVolunteer(volunteer){
+            var deferred = $q.defer();
+            // Make call to RESTFUL API
+            $http.post('json/volunteer.json', volunteer)
+                .success(function(data){
+                    service.volunteers = data;
+                    deferred.resolve(data);
+                })
+                .error(function(err, status){
+                    deferred.reject('Failed to add volunteer');
+                });
+            return deferred.promise;
+        }
+
+        // UPDATE
+        // pass in a volunteer record and update the fields with the values
+        function srvcEditVolunteer(volunteer){
+            var idx = srvcGetSelectedIndex(volunteer.id);
+            if(idx != -1){
+                console.log('editvolunteer(' + id + ')(' + idx + ') changed:');
+                console.log('editvolunteer( --- name     [' + service.volunteers[idx].name + '] changed to ['+ volunteer.name + ']');
+                console.log('editvolunteer( --- href     [' + service.volunteers[idx].href + '] changed to ['+ volunteer.href + ']');
+                console.log('editvolunteer( --- img      [' + service.volunteers[idx].img + '] changed to ['+ volunteer.img + ']');
+                console.log('editvolunteer( --- category [' + service.volunteers[idx].category + '] changed to ['+ volunteer.category + ']');
+                service.volunteers[idx].name = volunteer.name ;
+                service.volunteers[idx].href = volunteer.href ;
+                service.volunteers[idx].img = volunteer.img ;
+                service.volunteers[idx].category = volunteer.category ;
+            } else {
+                console.log('Invalid volunteer index [' + idx + ']');
+            }
+            return service.volunteers[idx];
+        }
+
+        // DELETE
+        function srvcDelVolunteer(id){
+            var idx = srvcGetSelectedIndex(id);
+            if(idx != -1){
+                console.log('delvolunteer(' + id + ')(' + idx + ') deleted:');
+                console.log('delvolunteer( --- name     [' + service.volunteers[idx].name     + '] deleted');
+                console.log('delvolunteer( --- href     [' + service.volunteers[idx].href     + '] deleted');
+                console.log('delvolunteer( --- img      [' + service.volunteers[idx].img      + '] deleted');
+                console.log('delvolunteer( --- category [' + service.volunteers[idx].category + '] deleted');
+                service.volunteers.splice(idx,1);
+
+                return null;
+            } else {
+                console.log('Invalid volunteer index [' + idx + ']');
+            }
+        }
+        return service;
+    };
+
+    // volunteerService Definiton
+    angular
+        .module('app')
+        .service('volunteerService', [
+            '$http', 
+            '$q',
+            volunteerService]);
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - volunteer.service.js
+ ****************************************************************************/
+
+/*!***************************************************************************
+ *****************************************************************************
+ **
+ ** Filename    : facility.service.js
+ **
+ *****************************************************************************
+ ****************************************************************************/
+
+(function () {
+    'use strict';
+    var app = angular.module('app');
+
+
+    // facilityService Function
+    var facilityService = function($http, $q){
+
+        var service = {
+            facilities: [],
+            facilityCats: [],
+            srvcGetAllFacilities: srvcGetAllFacilities,
+            srvcGetFacilityCats: srvcGetFacilityCats,
+            srvcGetSelectedIndex: srvcGetSelectedIndex,
+            srvcGetAFacility: srvcGetAFacility,
+            srvcAddFacility: srvcAddFacility,
+            srvcEditFacility: srvcEditFacility,
+            srvcDelFacility: srvcDelFacility
+        };
+
+        // GET all facilities
+        function srvcGetAllFacilities(){
+            var deferred = $q.defer();
+            // Make call to RESTFUL API
+            $http.get('json/facility.json')
+            .success(function(data){
+                service.facilities = data;
+                deferred.resolve(data);
+            })
+            .error(function(err, status){
+                deferred.reject('Failed to get facilities');
+            });
+            return deferred.promise;
+        }
+
+        function srvcGetFacilityCats(){
+            var facilities = service.facilities;
+            var facilityCats =  [];
+            if( facilities.length <1){
+                facilities =  srvcGetAllfacilities();
+            }
+            if( facilities.length >0){
+                facilityCats = _.uniq(_.pluck(facilities, 'category'));
+            }
+            service.facilities = facilities;
+            service.facilityCats = facilityCats;
+            return facilityCats;
+        }
+
+        // get the selected index into the array
+        function srvcGetSelectedIndex(id){
+            if(id >= 0){
+                for(var i=0; i<service.facilities.length; i++){
+                    if(service.facilities[i].id == id){
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+        
+        // GET a facility
+        // pass in a facility Id and get the facility record
+        function srvcGetAFacility(id){
+            var idx = srvcGetSelectedIndex(id);
+            if(idx != -1){
+                console.log('getAFacility(' + id + ')(' + idx + ') = [' + service.facilities[idx].name + ']');
+                return service.facilities[idx];
+            } else {
+                deferred.reject('Facility could not be found!');
+            }
+            return null;
+        }
+
+        // ADD
+        function srvcAddFacility(facility){
+            var deferred = $q.defer();
+            // Make call to RESTFUL API
+            $http.post('json/facility.json', facility)
+                .success(function(data){
+                    service.facilities = data;
+                    deferred.resolve(data);
+                })
+                .error(function(err, status){
+                    deferred.reject('Failed to add facility');
+                });
+            return deferred.promise;
+        }
+
+        // UPDATE
+        // pass in a facility record and update the fields with the values
+        function srvcEditFacility(facility){
+            var idx = srvcGetSelectedIndex(facility.id);
+            if(idx != -1){
+                console.log('editFacility(' + id + ')(' + idx + ') changed:');
+                console.log('editFacility( --- name     [' + service.facilities[idx].name + '] changed to ['+ facility.name + ']');
+                console.log('editFacility( --- href     [' + service.facilities[idx].href + '] changed to ['+ facility.href + ']');
+                console.log('editFacility( --- img      [' + service.facilities[idx].img + '] changed to ['+ facility.img + ']');
+                console.log('editFacility( --- category [' + service.facilities[idx].category + '] changed to ['+ facility.category + ']');
+                service.facilities[idx].name = facility.name ;
+                service.facilities[idx].href = facility.href ;
+                service.facilities[idx].img = facility.img ;
+                service.facilities[idx].category = facility.category ;
+            } else {
+                console.log('Invalid facility index [' + idx + ']');
+            }
+            return service.facilities[idx];
+        }
+
+        // DELETE
+        function srvcDelFacility(id){
+            var idx = srvcGetSelectedIndex(id);
+            if(idx != -1){
+                console.log('delFacility(' + id + ')(' + idx + ') deleted:');
+                console.log('delFacility( --- name     [' + service.facility[idx].name     + '] deleted');
+                console.log('delFacility( --- href     [' + service.facility[idx].href     + '] deleted');
+                console.log('delFacility( --- img      [' + service.facility[idx].img      + '] deleted');
+                console.log('delFacility( --- category [' + service.facility[idx].category + '] deleted');
+                service.facility.splice(idx,1);
+
+                return null;
+            } else {
+                console.log('Invalid facility index [' + idx + ']');
+            }
+        }
+        return service;
+    };
+
+    // facilityService Definiton
+    angular
+        .module('app')
+        .service('facilityService', [
+            '$http', 
+            '$q',
+            facilityService]);
+
+}());
+
+/*****************************************************************************
+ ** END OF FILE - facility.service.js
  ****************************************************************************/

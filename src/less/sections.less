@@ -18,8 +18,8 @@
 }
 
 section {
-    .linGradient2(@color2; @color5; transparent);
-    color: @color6;
+    .linGradient2(@color2; @color10; @color10);
+    color: @color2;
     margin-bottom: 0px;
     margin-top: 0px;
     padding: 0px;
@@ -38,7 +38,7 @@ section {
 
     .section-subheading {
         .subheading-font;
-        color: @color5;
+        color: @color3;
         font-style: italic;
         font-weight: 400;
         margin: 0px auto 0px;
@@ -48,21 +48,96 @@ section {
         font-size: 16pt;
     }
 
-    .theResult {
-        font-family: monospace;
-        font-style: normal;
-        font-weight: normal;
-        background-color: green;
+    tr {
+        padding: 10px;
+        border: 1px solid @color7;
+    }
+    
+    th {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    td {
+        padding: 10px;
+        border-spacing: 10px;
+        border-collapse: separate;
+    }
+    
+} // ALL Sections
+
+
+//////////////////////////////////////////////////////////////////////////////
+// HOME SECTION
+//////////////////////////////////////////////////////////////////////////////
+.home-section {
+    color: @color8;
+
+    .section-heading {
+        .serif-font;
+        font-style: italic;
+        padding: 0px 10px 0px;
+        color: @color8;
+        text-shadow: 2px 3px 4px @color5;
     }
 
-    //.privacyPolicy,
-    //.termsOfUse {
-    //    display: none;
-    //    overflow: hidden;
-    //    visibility: hidden;
-    //}
+    .section-subheading {
+        img {
+            margin: 0px auto 30px;
+            width: 90%;
+            max-width: 500px;
+        }
+    }
+    
+    .homeList ul li {
+        text-align: left;
+    }
 
-} // ALL Sections
+} // Section HOME
+
+//////////////////////////////////////////////////////////////////////////////
+// CLIENT SECTION
+//////////////////////////////////////////////////////////////////////////////
+.client-section {
+    color: @color8;
+
+
+    #rbSelect {
+        color: red;
+    }
+} // Section CLIENT
+
+//////////////////////////////////////////////////////////////////////////////
+// FACILITY SECTION
+//////////////////////////////////////////////////////////////////////////////
+.facility-section {
+    color: @color8;
+
+} // Section FACILITY
+
+//////////////////////////////////////////////////////////////////////////////
+// VOLUNTEER SECTION
+//////////////////////////////////////////////////////////////////////////////
+.volunteer-section {
+    color: @color8;
+
+    table {
+        padding: 10px;
+        border: 1px solid @color7;
+    }
+
+} // Section VOLUNTEER
+
+//////////////////////////////////////////////////////////////////////////////
+// ACCOUNT SECTION
+//////////////////////////////////////////////////////////////////////////////
+// TODO: Complete the Login/Account section with real logic
+.account-section {
+    background-color: white;
+    color: @color8;
+
+} // Section ACCOUNT
+
 
 //////////////////////////////////////////////////////////////////////////////
 // DIFFERENT SCREEN WIDTHS SUB-SECTION
@@ -198,152 +273,6 @@ section {
         display: none;
 	}
 } // ALL Sections
-
-//////////////////////////////////////////////////////////////////////////////
-// HOME SECTION
-//////////////////////////////////////////////////////////////////////////////
-.home-section {
-
-    .linGradient2(transparent; transparent; transparent);
-    //text-align: center;
-
-    .section-heading {
-        .serif-font;
-        font-style: italic;
-        padding: 0px 10px 0px;
-        color: @color8;
-        text-shadow: 2px 3px 4px @color5;
-    }
-    .section-subheading {
-        img {
-            margin: 0px auto 30px;
-            width: 90%;
-            max-width: 500px;
-        }
-    }
-
-    .calContainer {
-        display: inline-block;
-        height: 100%;
-        margin: 0px auto;
-        overflow: auto;
-        padding: 0px;
-        text-align: center;
-        width: 100%;
-
-        .calSubcontainer {
-            display: inline-block;
-            margin: 5px auto;
-            padding: 10px;
-
-            #calBox {
-                margin: 0px;
-                padding: 10px;
-                width: 100%;
-            }
-        }
-    }
-
-    // Defined within the javascript that produces each calendar
-    .calTable {
-        background-color: @color6;
-        border: 1px dotted @color9;
-        color: @color8;
-        display: inline-block;
-        font-size: 8pt;
-        margin: 5px auto;
-        opacity: 1;
-        overflow: hidden;
-        padding: 0px;
-
-        .monHdr {
-            font-size: 12pt;
-            margin: 0px auto;
-            text-align: center;
-        }
-
-        .wkdayHdr {
-            font-size: 10pt;
-            margin: 10px 20px;
-            padding: 2px;
-            text-align: center;
-        }
-
-        .calDayRow {
-            font-size: 8pt;
-            text-align: center;
-            width: 30px;
-        }
-
-        .hiLite {
-            background-color: @color9;
-            border-radius: 40%;
-            color: @color6;
-        }
-    }
-
-    #learnMore {
-        margin: 0px auto;
-        text-align: center;
-    }
-
-} // Section HOME
-
-//////////////////////////////////////////////////////////////////////////////
-// ABOUT OpenDataGH6 SECTION
-//////////////////////////////////////////////////////////////////////////////
-.about-section {
-    .linGradient2(@color7; @color8; transparent);
-
-    .about-text {
-        color: @color6;
-        margin-left: 50px;
-        margin-right: 50px;
-    }
-
-    .section-subheading {
-        color: @color5;
-    }
-
-} // Section ABOUT
-
-//////////////////////////////////////////////////////////////////////////////
-// ABOUT WEBSITE SECTION
-//////////////////////////////////////////////////////////////////////////////
-.website-section {
-    .linGradient2(@color7; @color8; transparent);
-
-    .about-text {
-        color: @color6;
-        margin-left: 50px;
-        margin-right: 50px;
-    }
-
-    .section-subheading {
-        color: @color3;
-    }
-
-    img {
-        height: 60px;
-        width: auto;
-    }
-} // Section WEBSITE
-
-//////////////////////////////////////////////////////////////////////////////
-// ACCOUNTS SECTION
-//////////////////////////////////////////////////////////////////////////////
-// TODO: Complete the Login/Account section
-.account-section {
-    background-color: white;
-    color: @color2;
-
-    button,
-    .btn,
-    .btn-primary {
-        background-color: @color2;
-        color: @color6;
-    }
-} // Section ACCOUNT
 
 /*****************************************************************************
  ** END OF FILE - sections.less

@@ -1,0 +1,109 @@
+<!doctype html>
+<!--
+/*
+ * @ngdoc overview
+ * @name volunteer.html
+ *
+ * @description
+ * AngularJS partials view - Volunteer screen.
+ *
+ */
+-->
+
+<section class="volunteer-section">
+    
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 text-center">
+
+            <div class="section-heading">Add A Volunteer Resource</div>
+            <div class="section-subheading"> ======================== </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 text-center">
+    
+            <form name="addVolunteerForm">
+                <table style="border: 1px dotted grey; margin: auto; padding: 10px;">
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input type="text" ng-model="volunteer.volFName" required>
+                            <div role="alert">
+                                <span class="error" ng-show="addVolunteerForm.vfirstname.$error.required">
+                                Required!</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input type="text" ng-model="volunteer.volLName" required>
+                            <div role="alert">
+                                <span class="error" ng-show="addVolunteerForm.vfirstname.$error.required">
+                                Required!</span>
+                            </div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>Middle Name:</td>
+                        <td><input type="text" ng-model="volunteer.vMName" ng-model="volunteer.volFName"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td><input type="radio" ng-model="volunteer.gender" value="male" checked> Male&nbsp;
+                            <input type="radio" ng-model="volunteer.gender" value="female"> Female&nbsp;
+                            <input type="radio" ng-model="volunteer.gender" value="other"> Other
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Race:</td>
+                        <td>
+                            <select ng-model="volunteer.volRace">
+                                <option value="White">White</option>
+                                <option value="Black">Black or African-American</option>
+                                <option value="Hispanic">Hispanic</option>
+                                <option value="Asian ">Asian </option>
+                                <option value="NativeIndian">American Indian or Alaska Native</option>
+                                <option value="Hawaiian">Native Hawaiian or Other Pacific Islander</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </td>  
+                    </tr> 
+                    <tr>
+                        <td>Primary Need:</td>
+                        <td>
+                            <select ng-model="volunteer.vprimSrvc">
+                                <option value="Children">Child Care</option>
+                                <option value="Transportation">Transportation</option>
+                                <option value="SingleMen">Men</option>
+                                <option value="SingleWomen">Women</option>
+                                <option value="Families">Families</option>
+                                <option value="Shelter">Shelter</option>
+                                <option value="Food">Food</option>
+                                <option value="Other">Other</option>
+                            </select>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zipcode:</td>
+                        <td><input type="text" ng-model="volunteer.Zip" ng-minlength="5" ng-maxlength="10"></td>
+                    </tr>
+                    <tr>
+                        <td>County:</td>
+                        <td><input type="text" ng-model="volunteer.County"></td>
+                    </tr> 
+                    <tr>
+                        <td>Phone:</td>
+                        <td><input type="phone" ng-model="volunteer.Phone"></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" ng-model="volunteer.Email"></td>
+                    </tr>
+                </table>                                                         
+            </form>
+
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    
+</section>

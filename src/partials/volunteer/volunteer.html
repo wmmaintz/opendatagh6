@@ -2,10 +2,10 @@
 <!--
 /*
  * @ngdoc overview
- * @name home.html
+ * @name volunteer.html
  *
  * @description
- * AngularJS partials view - Home screen.
+ * AngularJS partials view - Volunteer screen.
  *
  */
 -->
@@ -17,11 +17,47 @@
 
             <div class="section-heading">Volunteer Resources</div>
             <div class="section-subheading"> --- </div>
-
-            <p> This is the VOLUNTEER RESOURCES page. </p>
-            <br/>
-
         </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <table cellspacing="10" style="border: 1px dotted grey; margin: auto;">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Srvc</th>
+                    <th>County</th>
+                    <th>Zip Code</th>
+                    <th>Distance</th>
+                </tr>
+                <tr for ng-repeat="volunteer in volunteers" cellpadding="10"  
+                    style="border: 1px dotted grey;">
+                    <td>{{volunteer.volunteerId}}</td>
+                    <td>{{volunteer.volLName}}, {{volunteer.volFName}} {{volunteer.volMName}}</td>
+                    <td>{{volunteer.volGender}}</td>
+                    <td>{{volunteer.volDob}}</td>
+                    <td>{{volunteer.volMainService}}</td>
+                    <td>{{volunteer.volCounty}}</td>
+                    <td>{{volunteer.volZip}}</td>
+                    <td>{{volunteer.volDistance}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <br/>
+                <h4>Either select one of the above clients or add a new client.</h4>
+                <br/>
+                <a id="addVolunteer" class="btn btn-primary text-center" href="#/addVolunteer">
+                    <span>Add Volunteer</span>
+                </a>
+            </div>
+        </div>  
+
     </div>
     
     <br/><br/>

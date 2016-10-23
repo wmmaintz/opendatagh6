@@ -1,7 +1,7 @@
 /*!***************************************************************************
  *****************************************************************************
  **
- ** Filename    : sample.controller.js
+ ** Filename    : volunteer.controller.js
  **
  *****************************************************************************
  ****************************************************************************/
@@ -9,32 +9,32 @@
 (function () {
     'use strict';
 
-    // sampleController Function
-    var sampleController = function($scope, sampleService){
+    // volunteerController Function
+    var volunteerController = function($scope, volunteerService){
 
         if(debug){
-            console.log('sampleController activated');
+            console.log('volunteerController activated');
         }    
 
         var vm = $scope;
 
         //////////////////////////////////////////////////////////////////////
-        // sample collection
+        // volunteers collection
         //////////////////////////////////////////////////////////////////////
         vm.init = function(){
-            vm.samples = [];
-            vm.sampleCats = [];
+            vm.volunteers = [];
+            vm.volunteerCats = [];
             vm.sortOrder = 'id';
-            vm.samples = vm.getAllV();
+            vm.volunteers = vm.getAllV();
         };
 
-        // GET All samples
+        // GET All volunteers
         vm.getAllV = function(){
-            sampleService.srvcGetAllSamples()
+            volunteerService.srvcGetAllVolunteers()
             .then(function(response){
                 // success
-                vm.samples = response;
-                console.log('Number of samples returned = [' + vm.samples.length + ']');
+                vm.volunteers = response;
+                console.log('Number of volunteers returned = [' + vm.volunteers.length + ']');
             }, function(err){
                 // error
                 console.log('ERROR:' + err);
@@ -42,21 +42,21 @@
                 // message
             })
             .then(function(response){
-                vm.sampleCats = _.uniq(_.pluck(vm.samples, 'category'));
-                //vm.sampleCats = sampleService.getSampleCats();
+                vm.volunteerCats = _.uniq(_.pluck(vm.volunteers, 'category'));
+                //vm.volunteerCats = volunteerService.getvolunteerCats();
             });
-            if(debug && (vm.samples.length != 0) ){
-                console.log('sampleController samples(' + vm.samples.length + ')');
+            if(debug && (vm.volunteers.length != 0) ){
+                console.log('volunteerController volunteers(' + vm.volunteers.length + ')');
             }
         };
 
         vm.init();
 
-        vm.addSample = function(){
+        vm.addvolunteer = function(){
             
             var modalInstance = $modal.open({
-                templateUrl: '/partials/sample/addsample.html',
-                controller: 'sampleController'
+                templateUrl: '/partials/volunteer/addvolunteer.html',
+                controller: 'volunteerController'
             });
 
             modalInstance.result.then(function(){
@@ -71,10 +71,10 @@
             vm.modifyData = false;
         };
 
-        vm.editSample = function(sample){
+        vm.editVolunteer = function(volunteer){
             vm.modifyData = true;
             if(confirm('Do you want to save the changes?')){
-                sampleService.srvcEditSample(sample)
+                volunteerService.srvcEditvolunteer(volunteer)
                 .then(function(response){
                     // success
                     vm.getAllV();
@@ -88,13 +88,13 @@
             vm.modifyData = false;
         };
 
-        vm.delSample = function(id){
+        vm.delVolunteer = function(id){
             vm.modifyData = true;
-            if(confirm('Are you sure you want to DELETE this samples?')){
-                if(sampleService.srvcDelSample(id) == null){
-                    console.log('sample Id [' + id + '] has been deleted!');
+            if(confirm('Are you sure you want to DELETE this volunteer?')){
+                if(volunteerService.srvcDelvolunteer(id) == null){
+                    console.log('volunteer Id [' + id + '] has been deleted!');
                 } else {
-                    console.log('ERROR: sample Id [' + id + '] has NOT been deleted!');
+                    console.log('ERROR: volunteer Id [' + id + '] has NOT been deleted!');
                 }
             }
             vm.modifyData = false;
@@ -121,28 +121,28 @@
 
         vm.rowColor = ['cyan', 'cream'];
 
-        // console.log(' samples = ', vm.samples);
-        // console.log('#samples = ', vm.samples.length);
-        // console.log(' sampleCats = ', vm.sampleCats);
+        // console.log(' volunteers = ', vm.volunteers);
+        // console.log('#volunteers = ', vm.volunteers.length);
+        // console.log(' volunteerCats = ', vm.volunteerCats);
         // console.log('\nui-grid.Options = ', vm.gridOptions);
 
         return vm;
     };
 
-    // sampleController Definiton
+    // volunteerController Definiton
     angular
         .module('app')
-        .controller('sampleController', [
+        .controller('volunteerController', [
             '$scope', 
-            'sampleService',
-            sampleController]);
+            'volunteerService',
+            volunteerController]);
 
     if(debug){
-        console.log('sampleController defined');
+        console.log('volunteerController defined');
     }
 
 }());
 
 /*****************************************************************************
- ** END OF FILE - sample.controller.js
+ ** END OF FILE - volunteer.controller.js
  ****************************************************************************/

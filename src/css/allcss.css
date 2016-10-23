@@ -96,7 +96,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url('../img/home/blue-smoke-wallpaper-hd.jpg');
   margin: 0px;
   padding: 0px;
 }
@@ -512,13 +511,13 @@ img::-moz-selection {
 .nav .submenu-item,
 .navbar-default .submenu-item,
 .navbar-right .submenu-item {
-  background: -webkit-radial-gradient(#6d6e71, #94327e);
-  background: -moz-radial-gradient(#6d6e71, #94327e);
-  background: -ms-radial-gradient(#6d6e71, #94327e);
-  background: -o-radial-gradient(#6d6e71, #94327e);
-  background: radial-gradient(#6d6e71, #94327e);
-  color: #007fa1;
-  border: 2px solid #94327e;
+  background: -webkit-radial-gradient(#6d6e71, #414042);
+  background: -moz-radial-gradient(#6d6e71, #414042);
+  background: -ms-radial-gradient(#6d6e71, #414042);
+  background: -o-radial-gradient(#6d6e71, #414042);
+  background: radial-gradient(#6d6e71, #414042);
+  color: #ebe6da;
+  border: 2px solid #231f20;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */
@@ -528,7 +527,6 @@ img::-moz-selection {
   transition: radial-gradient 0.5s;
   transition: color 2s;
   transition: border-radius 0.5s;
-  background-color: black;
   border-radius: 15px;
 }
 .nav .submenu-item:active,
@@ -536,14 +534,20 @@ img::-moz-selection {
 .navbar-right .submenu-item:active,
 .nav .submenu-item.active,
 .navbar-default .submenu-item.active,
-.navbar-right .submenu-item.active {
-  background: -webkit-radial-gradient(#231f20, #005949);
-  background: -moz-radial-gradient(#231f20, #005949);
-  background: -ms-radial-gradient(#231f20, #005949);
-  background: -o-radial-gradient(#231f20, #005949);
-  background: radial-gradient(#231f20, #005949);
-  color: #414042;
-  border: 2px solid #414042;
+.navbar-right .submenu-item.active,
+.nav .submenu-item::selection,
+.navbar-default .submenu-item::selection,
+.navbar-right .submenu-item::selection,
+.nav .submenu-item::-moz-selection,
+.navbar-default .submenu-item::-moz-selection,
+.navbar-right .submenu-item::-moz-selection {
+  background: -webkit-radial-gradient(#79bcb7, #ebe6da);
+  background: -moz-radial-gradient(#79bcb7, #ebe6da);
+  background: -ms-radial-gradient(#79bcb7, #ebe6da);
+  background: -o-radial-gradient(#79bcb7, #ebe6da);
+  background: radial-gradient(#79bcb7, #ebe6da);
+  color: #007fa1;
+  border: 2px solid #231f20;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */
@@ -566,7 +570,7 @@ img::-moz-selection {
   background: -o-radial-gradient(#005949, #231f20);
   background: radial-gradient(#005949, #231f20);
   color: #ebe6da;
-  border: 2px solid #414042;
+  border: 2px solid #ebe6da;
   border-radius: 10px;
   -webkit-transition: -webkit-radial-gradient 0.5s;
   /* Safari 3.1 to 6.0 */
@@ -664,7 +668,6 @@ footer {
   background: -ms-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
   background: -o-linear-gradient(#6d6e71, #ebe6da, #ebe6da);
   background: linear-gradient(#6d6e71, #ebe6da, #ebe6da);
-  border-top: 0.25px solid #db124b;
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
   text-transform: uppercase;
   bottom: 0px;
@@ -786,12 +789,12 @@ footer .abbrev {
   border: 0px solid transparent;
 }
 section {
-  background: -webkit-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -moz-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -ms-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: -o-linear-gradient(#79bcb7, #ebe6da, transparent);
-  background: linear-gradient(#79bcb7, #ebe6da, transparent);
-  color: #414042;
+  background: -webkit-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -moz-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -ms-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: -o-linear-gradient(#79bcb7, #ffffff, #ffffff);
+  background: linear-gradient(#79bcb7, #ffffff, #ffffff);
+  color: #79bcb7;
   margin-bottom: 0px;
   margin-top: 0px;
   padding: 0px;
@@ -810,7 +813,7 @@ section .section-heading {
 }
 section .section-subheading {
   font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
-  color: #ebe6da;
+  color: #007fa1;
   font-style: italic;
   font-weight: 400;
   margin: 0px auto 0px;
@@ -819,11 +822,45 @@ section .section-subheading {
   word-wrap: break-word;
   font-size: 16pt;
 }
-section .theResult {
-  font-family: monospace;
-  font-style: normal;
-  font-weight: normal;
-  background-color: green;
+section table tr {
+  padding: 10px;
+  border: 1px solid #6d6e71;
+}
+.home-section {
+  color: #231f20;
+}
+.home-section .section-heading {
+  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  text-transform: none;
+  font-style: italic;
+  padding: 0px 10px 0px;
+  color: #231f20;
+  text-shadow: 2px 3px 4px #ebe6da;
+}
+.home-section .section-subheading img {
+  margin: 0px auto 30px;
+  width: 90%;
+  max-width: 500px;
+}
+.home-section .homeList ul li {
+  text-align: left;
+}
+.client-section {
+  color: #231f20;
+}
+.facility-section {
+  color: #231f20;
+}
+.volunteer-section {
+  color: #231f20;
+}
+.volunteer-section table {
+  padding: 10px;
+  border: 1px solid #6d6e71;
+}
+.account-section {
+  background-color: white;
+  color: #231f20;
 }
 /**
  ** Google & Bootstrap Device Sizes
@@ -917,125 +954,6 @@ section .theResult {
   section {
     display: none;
   }
-}
-.home-section {
-  background: -webkit-linear-gradient(transparent, transparent, transparent);
-  background: -moz-linear-gradient(transparent, transparent, transparent);
-  background: -ms-linear-gradient(transparent, transparent, transparent);
-  background: -o-linear-gradient(transparent, transparent, transparent);
-  background: linear-gradient(transparent, transparent, transparent);
-}
-.home-section .section-heading {
-  font-family: "Droid Serif", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
-  text-transform: none;
-  font-style: italic;
-  padding: 0px 10px 0px;
-  color: #231f20;
-  text-shadow: 2px 3px 4px #ebe6da;
-}
-.home-section .section-subheading img {
-  margin: 0px auto 30px;
-  width: 90%;
-  max-width: 500px;
-}
-.home-section .calContainer {
-  display: inline-block;
-  height: 100%;
-  margin: 0px auto;
-  overflow: auto;
-  padding: 0px;
-  text-align: center;
-  width: 100%;
-}
-.home-section .calContainer .calSubcontainer {
-  display: inline-block;
-  margin: 5px auto;
-  padding: 10px;
-}
-.home-section .calContainer .calSubcontainer #calBox {
-  margin: 0px;
-  padding: 10px;
-  width: 100%;
-}
-.home-section .calTable {
-  background-color: #414042;
-  border: 1px dotted #db124b;
-  color: #231f20;
-  display: inline-block;
-  font-size: 8pt;
-  margin: 5px auto;
-  opacity: 1;
-  overflow: hidden;
-  padding: 0px;
-}
-.home-section .calTable .monHdr {
-  font-size: 12pt;
-  margin: 0px auto;
-  text-align: center;
-}
-.home-section .calTable .wkdayHdr {
-  font-size: 10pt;
-  margin: 10px 20px;
-  padding: 2px;
-  text-align: center;
-}
-.home-section .calTable .calDayRow {
-  font-size: 8pt;
-  text-align: center;
-  width: 30px;
-}
-.home-section .calTable .hiLite {
-  background-color: #db124b;
-  border-radius: 40%;
-  color: #414042;
-}
-.home-section #learnMore {
-  margin: 0px auto;
-  text-align: center;
-}
-.about-section {
-  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
-  background: linear-gradient(#6d6e71, #231f20, transparent);
-}
-.about-section .about-text {
-  color: #414042;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.about-section .section-subheading {
-  color: #ebe6da;
-}
-.website-section {
-  background: -webkit-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -moz-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -ms-linear-gradient(#6d6e71, #231f20, transparent);
-  background: -o-linear-gradient(#6d6e71, #231f20, transparent);
-  background: linear-gradient(#6d6e71, #231f20, transparent);
-}
-.website-section .about-text {
-  color: #414042;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.website-section .section-subheading {
-  color: #007fa1;
-}
-.website-section img {
-  height: 60px;
-  width: auto;
-}
-.account-section {
-  background-color: white;
-  color: #79bcb7;
-}
-.account-section button,
-.account-section .btn,
-.account-section .btn-primary {
-  background-color: #79bcb7;
-  color: #414042;
 }
 /*****************************************************************************
  ** END OF FILE - sections.less
